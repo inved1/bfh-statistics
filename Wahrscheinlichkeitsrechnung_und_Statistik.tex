@@ -1,0 +1,92 @@
+%Simon Krenger: Wahrscheinlichkeitsrechnung und Statistik (BFH, FS2014)
+\documentclass{report}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc} 
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{floatrow}
+
+\usepackage{color}
+\definecolor{red}{rgb}{1,0,0}
+
+\newtheorem{mydef}{Definition}
+\newtheorem{myexample}{Beispiel}
+\newtheorem{myproof}{Beweis}
+\newtheorem{axiom}{Axiom}
+\newtheorem{satz}{Satz}
+
+\title{Wahrscheinlichkeitsrechung und Statistik}
+\author{Simon Krenger}
+
+\begin{document}
+\maketitle
+\chapter{Wahrscheinlichkeitsrechnung}
+\section{Definitionen}
+Wir führen ein Experiment wie
+\begin{itemize}
+\item werfen von 2 Münzen
+\item werfen von 3 Würfeln
+\item ziehen einer Zahl aus einer Urne
+\end{itemize}
+durch und fragen nach möglichen Ereignissen. Also schreiben wir diese als Menge auf
+\begin{equation}
+M = \{ KK, KZ, ZK, ZZ \}
+\end{equation}
+oder
+\begin{equation}
+M = \{ KK, KZ, ZZ \}
+\end{equation}
+\begin{mydef}
+Die Menge
+\begin{equation}
+\Omega := \{ \omega_1, \omega_2, \omega_3, ..., \omega_n \}
+\end{equation}
+heisst \underline{Stichprobenraum} (Ereignisraum), wenn jedem Versuchsausgang höchstens ein Element $\omega_i$ aus $\Omega$ zugeordnet ist.
+\end{mydef}
+Beim Werfen eines Würfels sind
+\begin{itemize}
+\item $\Omega_1 = \{ gerade, \quad ungerade \}$
+\item $\Omega_2 = \{ 1,2,3,4,5,6 \}$
+\item $\Omega_3 = \{ 4, \quad keine \quad 4 \}$
+\end{itemize}
+mögliche Stichprobenräume.\\\\
+Wie gross ist die Wahrscheinlichkeit beim Werfen von 2 (idealen) Würfeln zwei Sechsen zu erhalten?
+Als Stichprobenräume können wir
+\begin{align*}
+ \Omega_1 =& \{ (1/1), (1/2), (1/3), (1/4), (1/5), (1/6), \\
+ \quad & (2/2), (2/3), ..., (2/6), \\
+ \quad & (3/3), (3/4), ..., (3/6), \\
+ \quad & (4/4), (4/5), (4/6), \\
+ \quad & (5/5), (5/6), \\
+ \quad & (6/6) \}
+\end{align*}
+wählen. Wir unterscheiden also z.B. $(2/3)$ und $(3/2)$ nicht.\\\\
+Auch
+\begin{align*}
+ \Omega_1 =& \{ (1/1), (1/2), (1/3), (1/4), (1/5), (1/6), \\
+ \quad & (2/1), (2/2), (2/3), ..., (2/6), \\
+ \quad & (3/1), (3/2), (3/3), ..., (3/6), \\
+ \quad & ... \\
+ \quad & (6/1), (6/2), (6/3), ..., (6/6) \}
+\end{align*}
+ist ein möglicher Stichprobenraum.\\\\
+Im ersten Fall ist $|\Omega_1| = 21$ und im zweiten Fall ist $|\Omega_2| = 36$. Sind alle \underline{Ereignisse gleichwahrscheinlich}, so ist die Wahrscheinlichkeit zwei 6 zu würfeln
+\begin{itemize}
+\item im 1. Fall $ p = \frac{1}{21} $
+\item im 2. Fall $ p = \frac{1}{36} $
+\end{itemize}
+Welches Modell entspricht der Praxis? (Im Praxisversuch finden wir, dass $\frac{1}{36}$, also der zweite Fall, der Praxis entspricht)\\\\
+\begin{mydef}
+Jede Teilmenge von $\Omega$ heisst \underline{Ereignis}. Die leere Menge $\emptyset$ heisst \underline{unmögliches Ereignis} und $\Omega$ heisst \underline{sicheres Ereignis}.\\
+Enthält ein Ereignis $E = \{ a \}$ nur ein einziges Element, so heisst $E$ ein \underline{Elementarereignis}.
+\end{mydef}
+\begin{myexample}
+Beim Werfen von 2 Würfeln ist
+\begin{equation}
+\Omega = \{ (1/1), (1/2), ..., (6/6) \}
+\end{equation}
+und
+\end{myexample}
+\end{document}
