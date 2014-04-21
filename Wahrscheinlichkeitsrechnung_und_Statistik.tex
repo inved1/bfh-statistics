@@ -953,6 +953,126 @@ Var(Z) = \frac{\frac{5}{6}}{(\frac{1}{6})^2} = \frac{5}{6} \cdot \frac{36}{1} = 
 \end{equation}
 und damit wird $\sigma = 5.47$
 
+\section{Binomialverteilung}
+Bei einem Bernoulli-Experiment fragen wir, wie oft das von uns gewünschte Ereignis aufgetreten ist.
+\begin{myexample}
+Wie oft ist \lq\lq{}Zahl\rq\rq{} beim Werfen von 50 Münzen aufgetreten?
+\end{myexample}
+Wir betrachten Familien mit Kindern (M: Mädchen, K: Knaben), die wir dem Alter nach ordnen.\\
+Bei einer Familie mit
+\begin{enumerate}
+\item
+2 Kindern sind\\
+KK, MM, KM, MK
+\item
+3 Kindern sind\\
+KKK, MMM, MKK, KMK, KKM, MMK, MKM, KMM
+\end{enumerate}
+die Möglichkeiten. Zählen wir nach Geschlecht, so gibt es bei
+\begin{enumerate}
+\item
+2 Kindern: 1,1,2
+\item
+3 Kindern: 1,1,3,3
+\end{enumerate}
+Möglichkeiten. Wie gross ist die Wahrscheinlichkeit, dass in einer Familie mit 3 Kindern genau 2 Mädchen sind.
+\begin{equation}
+p = \frac{3}{8}
+\end{equation}
+Wir finden (erneut) die Zahlen des Pascalschen Dreiecks
+\begin{center}
+\begin{tabular}{rccccccccc}
+$n=0$: & & & & & 1 & & & & \\
+$n=1$: & & & & 1 & & 1 & & & \\
+$n=2$: & & & 1 & & 2 & & 1 & & \\
+$n=3$: & & 1 & & 3 & & 3 & & 1 & \\
+$n=4$: & 1 & & 4 & & 6 & & 4 & & 1%
+\end{tabular}
+\end{center}
+So finden wir sofort die Wahrscheinlichkeit für 4 Knaben in einer Familie mit 7 Kindern
+\begin{equation}
+P(K=4) = \binom{7}{4} \cdot p^4q^3
+\end{equation}
+wenn
+\begin{itemize}
+\item p: Wahrscheinlichkeit für eine Knabengeburt
+\item q: Wahrscheinlichkeit für eine Mädchengeburt
+\end{itemize}
+ist. Denn die Bernoulli-Kette ist
+\begin{quote}
+ppqpqqp
+\end{quote}
+mit allen Vertauschungen.
+\begin{mydef}Tritt in einem Bernoulli-Experiment das Ereignis $A$ mit Wahrscheinlichkeit $p$ ein und fragen wir nach der Wahrscheinlichkeit, dass $A$ k-mal in $n$ Versuchen aufgetreten ist, so ist die Wahrscheinlichkeit
+\begin{equation}
+P(Z=k) = \binom{n}{k} p^kq^{n-k} \quad , q=1-p
+\end{equation}
+eine \underline{binominalverteilte} Zufallsvariable.
+\end{mydef}
+\begin{myexample}
+Wie gross ist die Wahrscheinlichkeit, beim Werfen von 23 Münzen genau 11-mal \lq\lq{}Kopf\rq\rq{} zu erhalten?
+\begin{equation}
+P(K=11) = \binom{23}{11} p^11 q^12
+\end{equation}
+mit $p = \frac{1}{2}$ (und $q = 1 - \frac{1}{2} = \frac{1}{2}$), also
+\begin{equation}
+P(K=11) = \binom{23}{11} (\frac1{1}{2})^23 = 0.161
+\end{equation}
+\end{myexample}
+\underline{Erwartungswert}: Nach der Definition ist
+\begin{equation}
+E(Z) = \sum_{i=1}^n{k_i \cdot P(Z=k_i)}
+\end{equation}
+also für die Binominalverteilung
+\begin{equation}
+E(Z) = \sum_{k=0}^n{k \binom{n}{k} p^k q^{n-k}}
+\end{equation}
+Der Ausdruck $k \cdot p^k$ erinnert an $(x^n)\rq{} = n \cdot x^{n-1}$ (Ableitung). Wir wählen eine Funktion $f$ mit
+\begin{equation}
+f(p) = (p + q)^n = \sum_{k=0}^n{\binom{n}{k} p^k q^{n-k}}
+\end{equation}
+nach dem binomischen Lehrsatz. So wird
+\begin{equation}
+f\rq{}(p) = n \cdot (p+q)^{n-1} = \sum_{k=0}^n{\binom{n}{k} k \cdot p^{k-1} q^{n-k}}
+\end{equation}
+und wir multiplizieren mit $p$:
+\begin{align*}
+pn(p+q)^{n-1} = & \sum_{k=0}^n{\binom{n}{k} k p^k q^{n-k}}\\
+pn(p+q)^{n-1} = & E(Z)
+\end{align*}
+Mit $q = 1 - p$ wird
+\begin{equation}
+E(Z) = pn(p+1-p)^{n-1}
+\end{equation}
+und so wird
+\begin{equation}
+E(Z) = n \cdot p
+\end{equation}
+\underline{Erwartungswert}: Da $Var(Z) = E(Z - E(Z))^2$ und $E$ linear ist, wird
+\begin{align*}
+Var(Z) = & E(Z^2) - (E(Z))^2\\
+= & np -np^2\\
+= & np (1-p)
+\end{align*}
+wird
+\begin{equation}
+Var(Z) = n \cdot p \cdot q
+\end{equation}
+
+\section{Poisson-Verteilung}
+(Simon Denis Poisson, 1781 bis 1840, Paris)\\\\
+Für grosse $n$ und kleines $p$ soll die Binominalverteilung angenährt werden. Es ist
+\begin{equation}
+P(Z=k) = \binom{n}{k} p^k q^{n-k}
+\end{equation}
+und es sei
+\begin{equation}
+\lambda := n \cdot p
+\end{equation}
+Dann ist
+\begin{equation}
+p = \frac{\lambda}{n}, q = 1 - \frac{\lambda}{n}
+\end{equation}•
 
 \begin{myexample}
 \end{myexample}
