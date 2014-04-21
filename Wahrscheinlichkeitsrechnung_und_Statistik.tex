@@ -7,9 +7,12 @@
 \usepackage{graphicx}
 \usepackage{mathtools}
 \usepackage{floatrow}
+\usepackage{enumerate}
 
 \usepackage{color}
 \definecolor{red}{rgb}{1,0,0}
+\definecolor{green}{rgb}{0,1,0}
+\definecolor{blue}{rgb}{0,0,1}
 
 \newtheorem{mydef}{Definition}
 \newtheorem{myexample}{Beispiel}
@@ -104,7 +107,7 @@ Welches ist nun die Wahrscheinlichkeit für eines dieser Ereignisse?
 \textit{(Pierre Simon Laplace, 1749 bis 1827, Paris)}\\\\
 Hat in $\Omega = \{ A_1, A_2, A_3, ..., A_n \}$ jedes Ereignis die gleiche Wahrscheinlichkeit, so ist die Wahrscheinlichkeit für ein Ereignis $E = A_1 \cup A_2 \cup ... \cup A_k (k \leq n)$ bestimmt durch
 \begin{equation}
-p(E) = \frac{|E|}{|\Omega|}
+P(E) = \frac{|E|}{|\Omega|}
 \end{equation}
 Es werden also die günstigen Fälle durch die möglichen Fälle dividiert:
 \begin{quote}
@@ -123,7 +126,9 @@ Für die oben genannten Ereignisse ist also $|\Omega| = 36$,
 \begin{equation}
 |D| = 0 \quad \longrightarrow \quad p = 0
 \end{equation}
+\begin{mydef}
 \underline{1. Zählprinzip}: Es gibt $n^k$ Möglichkeiten um $n$ Elemente auf $k$ Plätze (in Gruppen zu $k$ Elementen) zu verteilen.
+\end{mydef}
 \begin{itemize}
 \item 2 Würfel: $|\Omega| = 6^2$
 \item 3 Würfel: $|\Omega| = 6^3$
@@ -139,14 +144,12 @@ Wie gross ist die Wahrscheinlichkeit
  A &= \{ ZZZK, ZZKZ, ZKZZ, KZZZ \}\\
  \rightarrow |A| &= 4
 \end{align*}
-
 \item Beim Werfen von 5 Würfeln vier mal eine 1 und einmal eine 6 zu erhalten?
 \begin{align*}
  |\Omega| &= 6^5\\
  B &= \{ 11116, 11161, 11611, 16111, 61111 \}\\
  \rightarrow |B| &= 5
 \end{align*}
-
 \item Beim Toto zu gewinnen?\\
 Bei 13 Spielen ist
 \begin{quote}
@@ -158,4 +161,801 @@ $p = \frac{1}{3^{13}} = 6.27 * 10^{-7}$
 \end{quote}
 \end{enumerate}
 \end{myexample}
+
+\section{Axiome von Kolmogorow}
+(Andrej Nikolajewitsch Kolmogorow, 25. April 1903 bis 20. Oktober 1987, Moskau)\\\\
+Betrachten wir den Stichprobenraum $\Omega$, so sind bekanntlich alle Teilmengen von $\Omega$ die Ereignisse. Die Menge aller Teilmengen ist die Potenzmenge $P(\Omega)$.
+\begin{mydef}
+Wir nennen $P(\Omega)$ den \underline{Ereignisraum}.
+\end{mydef}
+\begin{axiom} Die Wahrscheinlichkeit $p$ ist eine Funktion über $P(\Omega)$ mit den Eigenschaften
+\begin{enumerate}
+\item $0 \leq P(A) \leq 1$ für alle $A \in P(\Omega)$
+\item $P(\Omega) = 1$
+\item $A, B \in P(\Omega)$ und $ A \cap B = \emptyset$, so $P(A \cup B) = P(A) + P(B)$
+\end{enumerate}
+\end{axiom}
+Axiom 3 sagt uns, dass die Ereignisse A und B \underline{unvereinbar} sind.\\
+Für $P(A \cup B)$ sagen wir \lq\lq{}Die Wahrscheinlichkeit, dass A \underline{oder} B eintrifft...\rq\rq{}\\\\
+\begin{myexample}
+\begin{enumerate}
+\item
+Die Wahrscheinlichkeit, beim Werfen eines Würfels eine 2 oder eine ungerade Zahl zu erhalten
+\begin{equation}
+A = \{2\} \longrightarrow |A| = 1 \longrightarrow P(A) = \frac{1}{6}
+\end{equation}
+\begin{equation}
+B = \{1,3,5\} \longrightarrow |B| = 3 \longrightarrow P(B) = \frac{3}{6}
+\end{equation}
+Es ist $A \cap B = \emptyset$, also
+\begin{equation}
+P(A \cup B) = \frac{1}{6} + \frac{3}{6} = \frac{4}{6} = \frac{2}{3}
+\end{equation}
+\item
+Wie gross ist die Wahrscheinlichkeit beim Würfeln von 2 Würfeln die Augensumme 10 zu erhalten?
+\begin{quote}
+10 = 4 + 6 = 6 + 4 oder 10 = 5 + 5
+\end{quote}
+\begin{equation}
+A = \{(4/6), (6/4)\} \longrightarrow P(A) = \frac{2}{36}
+\end{equation}
+\begin{equation}
+B = \{(5/5)\} \longrightarrow P(B) = \frac{1}{36}
+\end{equation}
+Es ist $A \cap B = \emptyset$, also
+\begin{equation}
+P(A \cup B) = \frac{2}{36} + \frac{1}{36} = \frac{3}{36} = \frac{1}{12}
+\end{equation}
+\end{enumerate}
+\end{myexample}
+Wie ist es nun, wenn $A \cap B \neq \emptyset$?
+Es ist $A \cup B = A \cup (\overline{A} \cap B)$ und $B = (A \cap B) \cup (\overline{A} \cap B)$.
+\\\\TODO: Grafik\\\\
+Wir sehen, dass
+\begin{quote}
+$A$ und $\overline{A} \cap B$ disjunkt und $A \cap B$ und $\overline{A} \cap B$ disjunkt sind. Nach Axiom 3 ist also
+\begin{equation}
+P(A \cup B) = P(A) + P(\overline{A} \cap B)
+\end{equation}
+\begin{equation}
+P(B) = P(A \cap B) + P(\overline{A} \cap B)
+\end{equation}
+\begin{equation}
+P(A \cup B) - P(B) = P(A) - P(A \cap B)
+\end{equation}
+und damit
+\begin{equation}
+P(A \cup B) = P(A) + P(B) - P(A \cap B)
+\end{equation}
+\end{quote}
+\begin{myexample}
+Wahrscheinlichkeit, dass beim Werfen von 2 Würfeln beide Zahlen ungerade oder gleich sind.
+\begin{align*}
+ A =& \{(1/1),(1/3),(1/5), ..., (5/5)\} \\
+ B =& \{(1/1),(2/2),(3/3),(4/4),(5/5),(6/6)\}\\
+ \rightarrow A \cap B =& \{(1/1),(3/3),(5/5)\}
+\end{align*}
+Es ist $A = \{1,3,5\} \times \{1,3,5\}$ also
+\begin{equation}
+A = 3 \cdot 3 = 9 \longrightarrow P(A) = \frac{9}{36}
+\end{equation}
+Also
+\begin{equation}
+P(A \cup B) = \frac{9}{36} + \frac{6}{36} - \frac{3}{36} = \frac{12}{36} = \frac{1}{3}
+\end{equation}
+\end{myexample}
+\begin{mydef}
+Zwei Ereignisse heissen (stochastisch) \underline{unabhängig}, wenn
+\begin{equation}
+P(A \cap B) = P(A) \cdot P(B)
+\end{equation}
+\end{mydef}
+Wir sagen für $P(A \cap B)$, die Wahrscheinlichkeit, dass $A$ \underline{und} $B$ eintreten.
+\begin{myexample}Beispiele zur stochastischen Unabhängigkeit:
+\begin{enumerate}
+\item
+Zwei Münzen werden geworfen und
+\begin{quote}
+A: Höchstens einmal \lq\lq{}Zahl\rq\rq{}\\
+B: Jede Seite mindestens einmal
+\end{quote}
+Sind die Ereignisse unabhängig?
+\begin{align*}
+ A =& \{KK, KZ, ZK\} \longrightarrow P(A) = \frac{3}{4}\\
+ B =& \{KZ, ZK\} \longrightarrow P(B) = \frac{2}{4}\\
+A \cap B =& \{(KZ, ZK)\} \longrightarrow P(A \cap B) = \frac{2}{4}
+\end{align*}
+also $P(A) \cdot P(B) = \frac{3}{4} \cdot \frac{1}{2} = \frac{3}{8}$ und $P(A \cap B) = \frac{1}{2}$, also
+\begin{equation}
+P(A) \cdot P(B) \neq P(A \cap B)
+\end{equation}
+also sind die Ereignisse A  und B nicht unabhängig
+\item
+2 Würfel werfen und
+\begin{quote}
+A: Augensumme ist ungerade\\
+B: Augensumme ist gerade
+\end{quote}
+\begin{align*}
+ A =& \{3,5,7,9,11\} \longrightarrow P(A) = \frac{18}{36}\\
+ B =& \{2,4,6,8,10,12\} \longrightarrow P(B) = \frac{18}{36}
+\end{align*}
+somit $A \cap B = \emptyset$, dann ist
+\begin{equation}
+P(A) \cdot P(B) = \frac{1}{2} \cdot \frac{1}{2} = \frac{1}{4}
+\end{equation}
+und $P(A \cap B) = 0$, also sind die Ereignisse nicht unabhängig!
+\end{enumerate}
+\end{myexample}
+
+\section{Baumdiagramm, Urnenmodell}
+Wenn unser Experiment aus mehreren Schritten besteht, so eignet sich das Baumdiagramm, um die Lösung zu finden.
+\begin{myexample}
+In einer Urne sind 4 Zettel mit den Buchstaben $A, N, B, E$. Wie gross ist die Wahrscheinlichkeit, beim Ziehen dieser Zettel \underline{mit Zurücklegen}, dass Wort $ANNA$ zu erhalten?
+\\\\TODO: Grafik\\\\
+Wir benötigen also
+\begin{quote}
+A und A und N und N\\
+oder\\
+A und N und A und N\\
+oder ...
+\end{quote}
+Genauso berechnen wir die Wahrscheinlichkeit: Längs eines Weges multiplizieren wir und alle diese so erhaltenen Wahrscheinlichkeiten addieren wir dann:
+\begin{equation}
+p = \frac{1}{4} \cdot \frac{1}{4} \cdot \frac{1}{4} \cdot \frac{1}{4} + \frac{1}{4} \cdot \frac{1}{4} \cdot \frac{1}{4} \cdot \frac{1}{4} + ... = 6 \cdot \frac{1}{4^4} = \frac{3}{128}
+\end{equation}
+\end{myexample}
+\subsection{Urnenmodell}
+Allgemein betrachten wir eine Urne, in welcher verschiedenartige Kugeln sind. Ziehen wir nun Kugeln, so können wir dies entweder \underline{mit Zurücklegen} oder \underline{ohne Zurücklegen} machen.
+\begin{myexample}
+In einer Urne sind 4 blaue und 3 rote Kugeln. Wie gross ist die Wahrscheinlichkeit, dass wir beim Ziehen
+\begin{enumerate}
+\item
+mit Zurücklegen
+\item
+ohne Zurücklegen
+\end{enumerate}
+2 blaue und eine rote Kugel erhalten?
+\begin{enumerate}
+\item
+TODO: Grafik mit Zurücklegen\\\\
+\begin{equation}
+p = \frac{4}{7} \cdot \frac{4}{7} \cdot \frac{3}{7} + \frac{4}{7} \cdot \frac{4}{7} \cdot \frac{3}{7} + \frac{4}{7} \cdot \frac{4}{7} \cdot \frac{3}{7}
+\end{equation}
+\begin{equation}
+p = 3 (\frac{4}{7})^2(\frac{3}{7})^1 = 3 \cdot \frac{16}{49} \cdot \frac{3}{7} = \frac{144}{343}
+\end{equation}
+\item
+TODO: Grafik\\\\
+\begin{equation}
+p = \frac{4}{7} \cdot \frac{3}{6} \cdot \frac{3}{5} + \frac{4}{7} \cdot \frac{3}{6} \cdot \frac{3}{5} +\frac{4}{7} \cdot \frac{3}{6} \cdot \frac{3}{5}
+\end{equation}
+\begin{equation}
+p = 3 \cdot \frac{4}{7} \cdot \frac{32}{5 \cdot 6} = \frac{108}{210} = \frac{54}{105} = \frac{18}{35}
+\end{equation}
+\end{enumerate}
+\end{myexample}
+Das Baumdiagramm hilft uns auch, wenn wir fragen, wieviele Möglichkeiten es gibt aus einer Menge mit $n$ Elementen eine Teilmenge mit $k$ Elementen $(k \leq n)$ auszuwählen und die \underline{Reihenfolge wesentlich} ist:
+\begin{equation}
+abc \neq bac \neq cab
+\end{equation}
+\\\\TODO: Grafik\\\\
+Für die Wahl des 1. Elementes haben wir 5 Möglichkeiten, für die Wahl des 2. Elementes haben wir 4 Möglichkeiten und dann noch 3 Möglichkeiten für das 3. Element also
+\begin{equation}
+5 \cdot 4 \cdot 3 = 60 \mbox{ Möglichkeiten}
+\end{equation}
+\begin{myexample}
+Wie gross ist die Wahrscheinlichkeit, beim Werfen von 3 Würfeln lauter verschiedener Zahlen zu erhalten?
+\begin{quote}
+Günstige Fälle: $6 \cdot 5 \cdot 4 \cdot 3$\\
+Mögliche Fälle: $6^4$
+\end{quote}
+Also
+\begin{equation}
+p = \frac{6 \cdot 5 \cdot 4 \cdot 3}{6^4} = \frac{5 \cdot 4 \cdot 3}{6^3} = \frac{5 \cdot 4}{6^2 \cdot 2} = \frac{5}{18}
+\end{equation}
+\end{myexample}
+\begin{mydef}
+\underline{2. Zählprinzip:} Wählen wir $k$ aus $n$ Elementen, so gibt es also
+\end{mydef}
+\begin{equation}
+n (n-1) (n-2) ... (n-k+1)
+\end{equation}
+Möglichkeiten, wenn die Reihenfolge wesentlich ist.
+\begin{myexample}
+Wieviele fünfstellige Zahlen
+\begin{enumerate}[(a)]
+\item
+mit lauter ungeraden Ziffern
+\item
+mit lauter verschiedener geraden Ziffern
+\end{enumerate}
+gibt es?
+\begin{enumerate}[(a)]
+\item
+1. Zählprinzip: Für jede Ziffer eine der 5 Zahlen $1,3,5,7,9$, also $5^5$ Möglichkeiten.
+\item
+2. Zählprinzip: An erster Stelle eine der Zahlen $2,4,6,8$, an zweiter Stelle $0,2,4,6,8$, aber nicht dieselbe wie schon an erster Stelle etc. Also
+\begin{equation}
+4 \cdot 4 \cdot 3 \cdot 2 \cdot 1 = 96 \mbox{ Möglichkeiten}
+\end{equation}
+\end{enumerate}
+\end{myexample}
+
+\section{Gegenwahrscheinlichkeit}
+Oft ist es einfacher, die Wahrscheinlichkeit zu berechnen, dass A nicht eintrifft.
+\begin{myexample}
+Wie gross ist die Wahrscheinlichkeit beim Würfeln von 3 Münzen mindestens einmal \lq\lq{}Zahl\rq\rq{} zu erhalten?
+\end{myexample}
+Mindestens einmal \lq\lq{}Zahl\rq\rq{} bedeutet:
+\begin{quote}
+Einmal, zweimal oder dreimal \lq\lq{}Zahl\rq\rq{}
+\end{quote}
+,also ist
+\begin{equation}
+A = \{ZKK, ..., ZZK, ..., ZZZ \}
+\end{equation}
+und das \underline{Gegenereignis} ist
+\begin{equation}
+\overline{A} = \{KKK\}
+\end{equation}
+\\\\TODO: Grafik\\\\
+Es ist also $A \cup \overline{A} = \Omega$ und $A \cap \overline{A} = \emptyset$. Nach Axiom (3) ist also
+\begin{align*}
+ P(A \cup \overline{A}) =& P(A) + P(\overline{A})\\
+ \longrightarrow P(\Omega) =& P(A) + P(\overline{A})\\
+ 1 =& P(A) + P(\overline{A})
+\end{align*}
+\begin{mydef}
+Es ist also
+\begin{equation}
+P(\overline{A}) = 1 - P(A)
+\end{equation}
+heisst die Gegenwahrscheinlichkeit von A.
+\end{mydef}
+Im Beispiel ist also $P(\overline{A}) = \frac{1}{8}$ und damit ist $P(A) = 1 - \frac{1}{8} = \frac{7}{8}$.
+\begin{myexample}
+Wie gross ist die Wahrscheinlichkeit beim Werfen von 3 Würfeln nicht 3 gleiche Zahlen zu erhalten?
+\begin{align*}
+A =& \{(1/1/1),(2/2/2), ..., (6/6/6)\}\\
+\longrightarrow |A| =& 6 \mbox{ und } |\Omega| = 6^3
+\end{align*}
+ist
+\begin{equation}
+P(\overline{A}) = 1 - P(A) = 1 - \frac{6}{6^3} = 1 - \frac{1}{6^2} = \frac{35}{36}
+\end{equation}
+\end{myexample}
+Wir wählen in Zukunft die Schreibweise
+\begin{enumerate}
+\item
+$P(S=15)$ für die Wahrscheinlichkeit, dass die Augensumme 15 ist.
+\item
+$P(Z\geq1)$ für die Wahrscheinlichkeit, dass \underline{mindestens} einmal \lq\lq{}Zahl\rq\rq{} auftritt.
+\item
+$P(K\leq3)$ für die Warhscheinlichkeit, dass \underline{höchstens} dreimal \lq\lq{}Kopf\rq\rq{} vorkommt.
+\end{enumerate}
+\subsection{Geburtstagsproblem}
+Wie gross ist die Wahrscheinlichkeit, dass unter $n$ Personen $(n \leq 366)$ mindestens 2 am gleichen Tag Geburtstag haben?\\\\
+Mögliche Fälle: An erster Stelle kann eines der 365 Daten stehen, an zweiter, dritter, vierter, ... Stelle ebenso. Also gibt es
+\begin{equation}
+365^n \mbox{ mögliche Fälle}
+\end{equation}
+Günstige Fälle: Es ist einfacher, diejenigen Mengen zu suchen, die lauter verschiedene Daten enthalten.\\\\
+An erster Stelle sind dann 365, an zweiter Stelle noch 364, an dritter Stelle noch 363, ... Daten möglich. Also gibt es für das Gegenereignis
+\begin{equation}
+365 \cdot 364 \cdot 363 \cdot ... \cdot (365-n+1)
+\end{equation}
+günstige Fälle. Damit
+\begin{equation}
+p = 1 - \frac{365 \cdot 364 \cdot 363 \cdot ... \cdot (365-n + 1)}{365^n}
+\end{equation}
+\begin{myexample}
+Ein Schütze trifft die Scheibe mit einer Wahrscheinlichkeit $p = \frac{5}{6}$. Wie gross ist die Wahrscheinlichkeit, dass er bei 4 Schüssen mindestens einmal trifft?\\\\
+Mindestens einmal bedeutet $P(T=1) + P(T=2) + P(...$\\
+Gegenereignis: Keinmal treffen, d.h. $P(T=0) = \frac{1}{6}$\\\\
+So ist dann
+\begin{equation}
+P(T\geq1) = 1 - P(T=0)
+\end{equation}
+in 4 Schüssen, also
+\begin{align*}
+P(T \geq 1) =& 1 - (\frac{1}{6})^4\\
+=& 1 - \frac{1}{1296} = \frac{1293}{1296}
+\end{align*}
+Ein anderer Schütze trifft die Scheibe mit $p = \frac{3}{5}$. Wie oft muss er schiessen, um mit einer Wahrscheinlichkeit von mindestens $0.99$ einmal zu treffen?
+\begin{equation}
+P(T \geq 1) = 1 - P(T=0)
+\end{equation}
+In x Schüssen also
+\begin{align*}
+P(T \geq 1) =& 1 - (\frac{2}{5})^x\\
+\longrightarrow 1 - (\frac{2}{5})^x \geq & 0.99\\
+\longrightarrow 1 - (\frac{2}{5})^x \geq & \frac{99}{100}\\
+\longrightarrow \frac{1}{100} \geq & (\frac{2}{5})^x \\
+\longrightarrow \log{\frac{1}{100}} \geq & x \cdot \log{\frac{2}{5}} \\
+\longrightarrow -2 \geq & x \cdot \log{\frac{2}{5}} \\
+\longrightarrow -\frac{2}{log{\frac{2}{5}}} \geq & x
+\end{align*}
+, was falsch ist, denn $\log{\frac{2}{5}}$ ist negativ! Also
+\begin{equation}
+\frac{-2}{\log{\frac{2}{5}}} \geq x \approx 5.03
+\end{equation}
+Also mindestens 6 Schüsse.
+\end{myexample}
+
+\section{Kombinatorik}
+Wie gross ist die Wahrscheinlichkeit beim Werfen von 6 Würfeln 6 verschiedene Zahlen zu erhalten?
+\begin{quote}
+Mögliche Fälle: $|\Omega| = 6^6$\\
+Günstige Fälle: $6 \cdot 5 \cdot 4 \cdot 3 \cdot 2 \cdot 1$
+\end{quote}
+also
+\begin{equation}
+p =\frac{6 \cdot 5 \cdot 4 \cdot 3 \cdot 2 \cdot 1}{6^6} = \frac{120}{6^5} = \frac{20}{6^4} = \frac{10}{3 \cdot 6^3} = \frac{5}{3 \cdot 3 \cdot 6^2} = \frac{5}{324}
+\end{equation}
+Wieviele sinnvolle oder sinnlose Worte können wir mit den Buchstaben von $DIENSTAG$ bilden?\\
+\begin{quote}
+An erster Stelle stehen 8 Möglichkeiten,\\
+an zweiter Stelle stehen 7 Möglichkeiten, ...
+\end{quote}
+also
+\begin{equation}
+8 \cdot 7 \cdot 6 \cdot 5 \cdot 4 \cdot 3 \cdot 2 \cdot 1
+\end{equation}
+Worte.
+\begin{mydef}
+Ist $n \in \mathbb{N}$, so heisst
+\begin{equation}
+n! := n \cdot (n-1) \cdot (n-2) \cdot ... \cdot 3 \cdot 2 \cdot 1
+\end{equation}
+die \underline{Fakultät} von $n$.\\
+Ausserdem ist $0! = 1$.
+\end{mydef}
+Die Fakultäten wachsen sehr schnell:
+\begin{align*}
+4! = & 24\\
+5! = & 120\\
+6! = & 720\\
+7! = & 5040
+\end{align*}
+Wieviele Nullen stehen am Schluss von $100!$ ? Eine 0 entsteht durch Multiplikation mit $10$ und $10 = 2 \cdot 5$. Es ist
+\begin{equation}
+100! = 100 \cdot 99 \cdot 98 \cdot 97 \cdot ... \cdot 3 \cdot 2 \cdot 1
+\end{equation}
+und durch 5 dividierbar sind
+\begin{quote}
+5, 10, 15, 20, 25, 30, ..., 95, 100
+\end{quote}
+Das sind 20 Zahlen, aber
+\begin{equation}
+25 = 5 \cdot 5,\quad 50 = 2 \cdot 5 \cdot 5 \mbox{ und } 75 = 3 \cdot 5 \cdot 5
+\end{equation}
+somit sind 24 Nullen am Schluss von $100!$.\\
+Aufpassen:
+\begin{equation}
+3! \cdot 4! \neq 12! \mbox{ und } \frac{16!}{4!} \neq 2!
+\end{equation}
+\begin{mydef}
+\underline{3. Zählprinzip:} Es gibt $n!$ Möglichkeiten um $n$ Elemente auf $n$ Plätze zu verteilen.
+\end{mydef}
+Wieviele Sitzordnungen gibt es in der I3q?\\
+Es gibt $19!$ Sitzordnungen (für 19 Sitzordnungen auf 19 Stühlen). Wechseln wir jede Minute, so dauert es $19!$ Minuten, also $\approx$ 1 Trillion Jahre.\\\\
+Suchen wir alle Worte, die sich mit
+\begin{quote}
+$STRASSE$
+\end{quote}
+bilden lassen, so wären dies
+\begin{quote}
+$7!$ Worte
+\end{quote}
+aber
+\begin{align*}
+ & \textcolor{blue}{S}TRA\textcolor{red}{S}\textcolor{green}{S}E\\
+= & \textcolor{green}{S}TRA\textcolor{blue}{S}\textcolor{red}{S}E\\
+= & \textcolor{red}{S}TRA\textcolor{green}{S}\textcolor{blue}{S}E
+\end{align*}
+das Vertauschen der S ergibt kein neues Wort. Mit 3 Buchstaben sind dies $3!$ Möglichkeiten. Also gibt es
+\begin{equation}
+\frac{7!}{3!} = \frac{7 \cdot 6 \cdot 5 \cdot 4 \cdot 3 \cdot 2 \cdot 1}{3 \cdot 2 \cdot 1} = 7 \cdot 6 \cdot 5 \cdot 4 = 120 \cdot 7 = 840
+\end{equation}
+Wir untersuchen nun das folgende Wort (4-mal $S_1$, 4-mal $S_2$ und 2-mal $P$):
+\begin{quote}
+MISSISSIPPI
+\end{quote}
+Es gibt
+\begin{equation}
+\frac{11!}{4! \cdot 4! \cdot 2!} = 34650 \mbox{ Worte}
+\end{equation}
+\begin{myexample}
+Wie gross ist die Wahrscheinlichkeit, beim Werfen von 5 Münzen
+\begin{enumerate}[(a)]
+\item
+dreimal \lq\lq{}Zahl\rq\rq{}
+\item
+höchstens zweimal \lq\lq{}Zahl\rq\rq{}
+\item
+mindestens viermal \lq\lq{}Zahl\rq\rq{}
+\end{enumerate}
+zu erhalten?
+\begin{enumerate}[(a)]
+\item
+\begin{align*}
+A = & \{ZZZKK, ZZKKZ, ... \}\\
+\longrightarrow |A| = & \frac{5!}{3! \cdot 2!} = \frac{5 \cdot 4}{2!} = 10\\
+\longrightarrow P(Z=3) = & \frac{10}{2^5} = \frac{5}{16}
+\end{align*}
+\item
+\begin{align*}
+P(Z \leq 2) = & P(Z=2) + P(Z=1) + P(Z=0)\\
+= & \frac{10}{2^5} + \frac{5}{2^5} + \frac{1}{2^5} = \frac{16}{2^5} = \frac{1}{2}
+\end{align*}
+\item
+\begin{align*}
+P(Z \geq 4) = & P(Z=4) + P(Z=5)\\
+= & \frac{5}{2^5} + \frac{1}{2^5} = \frac{6}{2^5} = \frac{3}{16}
+\end{align*}
+\end{enumerate}
+\end{myexample}
+Wieviele Möglichkeiten gibt es, um aus einer Menge von $n$ Elementen, deren $k$ $(k < n)$ auszuwählen, wenn die \underline{Reihenfolge nicht wesentlich} ist?\\
+Nach dem 2. Zählprinzip gibt es
+\begin{equation}
+n \cdot (n-1) \cdot (n-2) \cdot (n-3) \cdot ... \cdot (n-k+1)
+\end{equation}
+Möglichkeiten. Die Reihenfolge ist unwesentlich, d.h.
+\begin{quote}
+abc = acb = bac = bca = cab = cba
+\end{quote}
+Dies sind also $3!$ Möglichkeiten. Enthält die Teilmenge $k$ Elemente, so fallen $k!$ Möglichkeiten weg, also gibt es
+\begin{equation}
+\frac{n \cdot (n-1) \cdot (n-2) \cdot (n-3) \cdot ... \cdot (n-k+1)}{k!}
+\end{equation}
+Möglichkeiten.
+\begin{myexample}
+Eine Gruppe von 4 Personen aus einer Menge von 10 Personen auszuwählen. Es gibt
+\begin{equation}
+\frac{10 \cdot 9 \cdot 8 \cdot 7}{4!} = 210 \mbox{ Möglichkeiten}
+\end{equation}
+\end{myexample}
+Wir erweitern
+\begin{equation}
+\frac{n \cdot (n-1) \cdot ... \cdot (n-k+1)}{k!} \cdot \textcolor{red}{\frac{(n-k) \cdot (n-k-1) \cdot ... \cdot 3 \cdot 2 \cdot 1}{(n-k) \cdot (n-k-1) \cdot ... \cdot 3 \cdot 2 \cdot 1}} = \frac{n!}{k! \cdot (n-k)!}
+\end{equation}
+\begin{mydef}
+Für $k, n \in \mathbb{N}_{0}$ heisst
+\begin{equation}
+\binom{n}{k} = \frac{n!}{k!(n-k)!} \quad \mbox{mit } 0 \leq k \leq n
+\end{equation}
+ein \underline{Binominalkoeffizient} (\lq\lq{}n tief k\rq\rq{}).
+\end{mydef}
+\begin{myexample}
+\begin{equation}
+\binom{5}{2} = \frac{5!}{2! \cdot 3!} = \frac{5 \cdot 4}{2 \cdot 1} = 10
+\end{equation}
+\begin{equation}
+\binom{11}{11} = \frac{11!}{11! \cdot 0!} = 1
+\end{equation}
+\begin{equation}
+\binom{7}{0} = \frac{7!}{0! \cdot 7!} = 1
+\end{equation}
+\end{myexample}
+Der Name stammt vom Binom. Der \underline{binomische Lehrsatz}
+\begin{equation}
+(a + b)^n = \sum^n_{k=0}{\binom{n}{k} a^{n-k} b^k}, n \in \mathbb{N}
+\end{equation}
+sagt aus, wie Binome berechnet werden.
+\begin{myexample}
+\begin{equation}
+(a+b)^4 = \binom{4}{0} a^4 + \binom{4}{1} a^3b + \binom{4}{2} a^2b^2 + \binom{4}{3} ab^3 + \binom{4}{4} b^4
+\end{equation}
+\end{myexample}
+Also stehen die Binominalkoeffizienten im Pascal\rq{}schen Dreieck.
+\begin{mydef}
+\underline{4. Zählprinzip:} Eine Menge mit $n$ Elementen besitzt $\binom{n}{k}$ Teilmengen mit genau $k$ $(k \leq n)$ Elementen.\\\\
+Es gibt $\binom{n}{k}$ \underline{Kombinationen}, um aus einer Menge mit $n$ Elementen eine Teilmenge mit $k$ Elementen auszuwählen, wenn die Reihenfolge unwesentlich ist.
+\end{mydef}
+\subsection{Eigenschaften der Binominalkoeffizienten}
+\begin{enumerate}
+\item
+symmetrisch
+\begin{equation}
+\binom{n}{k} = \binom{n}{n-k}
+\end{equation}
+\item
+\begin{equation}
+\binom{n}{0} = \binom{n}{n} = 1
+\end{equation}
+\item
+\begin{equation}
+\binom{n}{1} = \binom{n}{n-1} = n
+\end{equation}
+\item
+\begin{equation}
+\binom{n}{k} + \binom{n}{k+1} = \binom{n+1}{k+1}
+\end{equation}
+\end{enumerate}
+Für die praktische Rechnung ist
+\begin{equation}
+\binom{n}{k} = \frac{n!}{k! (n-k)!}
+\end{equation}
+zu umfangreich. Aber durch Kürzen wird
+\begin{equation}
+\binom{n}{k} = \frac{n \cdot (n-1) \cdot (n-2) \cdot ... \cdot (n-k+1)}{k!}
+\end{equation}
+d.h. im Zähler und im Nenner stehen $k$ Faktoren. Also
+\begin{equation}
+\binom{9}{4} = \frac{}{4!}
+\end{equation}
+also auch 4 Faktoren im Zähler, d.h.
+\begin{equation}
+\binom{9}{4} = \frac{9 \cdot 8 \cdot 7 \cdot 6}{4!} = \frac{9 \cdot 8 \cdot 7 \cdot 6}{4 \cdot 3 \cdot 2 \cdot 1} = 9 \cdot 7 \cdot 2 = 126
+\end{equation}
+\section{Urnenmodell 2}
+MIt Hilfe der Binominalkoeffizienten können wir das Ziehen von Kugeln aus einer Urne schneller berechnen. Sind in einer Urne 4 rote und 5 blaue Kugeln und werden ohne Zurücklegen Kugeln gezogen, so ist die Wahrscheinlichkeit zwei rote und drei blaue Kugeln zu ziehen
+\begin{equation}
+p = \frac{\binom{4}{2} \cdot \binom{5}{3}}{\binom{9}{5}} = \frac{6 \cdot 10}{\frac{9 \cdot 8 \cdot 7 \cdot 6}{4 \cdot 3 \cdot 2 \cdot 1}} = \frac{6 \cdot 10}{126} = \frac{10}{21}
+\end{equation}
+Allgemein: In einer Urne sind R rote und B blaue Kugeln. Es werden x rote und y blaue ohne zurücklegen gezogen. Dann ist
+\begin{equation}
+p = \frac{\binom{R}{x} \cdot \binom{B}{y}}{\binom{R+B}{x+y}}
+\end{equation}
+\begin{myexample}
+In einer Kiste sind 10 Werkstücke, wovon 4 fehlerhaft sind. Wie gross ist die Wahrscheinlichkeit, dass sich unter 2 zufällig gewählten Werkstücken 2 fehlerhafte befinden?
+\begin{equation}
+P(F=2) = \frac{\binom{4}{2} \cdot \binom{6}{0}}{\binom{10}{2}} = \frac{6 \cdot 1}{45} = \frac{2}{15}
+\end{equation}
+\end{myexample}
+Ziehen wir mit Zurücklegen wieder wie vorhin zwei rote und drei blaue aus einer Urne mit 4 roten und 5 blauen Kugeln
+\\\\TODO: Grafik\\\\
+Die Kugeln rot-rot-blau-blau-blau können auf $\frac{5!}{2! \cdot 3!}$ Arten angeordnet werden. Aber $\frac{5!}{2! \cdot 3!} = \binom{5}{2}$, also
+\begin{equation}
+p = \binom{5}{2} (\frac{4}{9})^2 (\frac{5}{9})^3
+\end{equation}
+
+\chapter{Verteilungen}
+\section{Zufallsvariablen}
+Werfen wir zwei Münzen und fragen, wie oft \lq\lq{}Zahl\rq\rq{} vorgekommen ist
+\begin{center}\begin{tabular}{c | c c c c}
+A & KK & KZ & ZK & ZZ\\
+\hline
+m & 0 & 1 & 1 & 2
+\end{tabular}\end{center}
+so schreiben wir für die Wahrscheinlichkeit $P(Z=m)$, also zum Beispiel
+\begin{equation}
+P(Z=1) = \frac{2}{4} = \frac{1}{2}
+\end{equation}
+Werfen wir zwei Münzen und fragen wir nach den Möglichkeiten die Augensumme A zu würfeln,
+\begin{center}\begin{tabular}{c | c c c c c c c c c c c}
+A & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12\\
+\hline
+m & 1 & 2 & 3 & 4 & 5 & 6 & 5 & 4 & 3 & 2 & 1
+\end{tabular}\end{center}
+so schreiben wir $P(A=m)$ für die Wahrscheinlichkeit, also zum Beispiel
+\begin{equation}
+P(A=8) = \frac{5}{36}
+\end{equation}
+Wir haben also jedem Ereignis A des Stichprobenraums $\Omega$ eine reelle Zahl zugeordnet.
+\begin{mydef}
+Eine \underline{Zufallsvariable Z} ist eine Funktion
+\begin{equation}
+Z: \Omega \quad \longrightarrow \quad \mathbb{R}
+\end{equation}
+Als \underline{Verteilung} oder \underline{Wahrscheinlichkeitsfunktion} einer Zufallsvariablen Z bezeichnen wir
+\begin{equation}
+P(Z=k)
+\end{equation}
+\end{mydef}
+\begin{myexample}
+\begin{enumerate}
+\item
+Zufallsvariable Z beim Werfen zweier Münzen ist
+\begin{equation}
+Z: \Omega \quad \longrightarrow \{0,1,2\}
+\end{equation}
+wenn wir nach der Anzahl \lq\lq{}Zahl\rq\rq{} fragen. Die Verteilung ist dann
+\begin{center}\begin{tabular}{c | c c c}
+k & 0 & 1 & 2\\
+\hline
+$P(Z=k)$ & $\frac{1}{4}$ & $\frac{1}{2}$ & $\frac{1}{4}$
+\end{tabular}\end{center}
+\item
+Bei einem Spiel mit 2 Würfeln beträgt der Gewinn 10.- für eine Doppelsechs und 2.- für eine Sechs. Dann ist
+\begin{equation}
+Z: \Omega \quad \longrightarrow \{10,2,0\}
+\end{equation}
+mit der Verteilung
+\begin{center}\begin{tabular}{c | c c c}
+k & 10 & 2 & 0\\
+\hline
+$P(Z=k)$ & $\frac{1}{36}$ & $\frac{10}{36}$ & $\frac{25}{36}$
+\end{tabular}\end{center}
+denn eine Sechs erhalten wir mit
+\begin{quote}
+$(6,x)$, wobei $x \in \{1,2,...,5\}$ oder
+$(x,6)$, wobei $x \in \{1,2,...,5\}$
+\end{quote}
+\end{enumerate}
+\end{myexample}
+Verteilungen einer Zufallsvariable werden graphisch dargestellt
+\\\\TODO: Grafik\\\\
+\begin{mydef}
+Nimmt eine Zufallsvariable Z die Werte $k_1, k_2, k_3, ..., k_n$ mit den Wahrscheinlichkeiten $p_1, p_2, p_3, ..., p_n$ an, so heisst
+\begin{align*}
+E(Z) = & k_1p_1 + k_2p_2 + k_3p_3 + ... + k_np_n\\
+= & k_1 P(Z=k_1) + k_2 P(Z=k_2) + ... + k_n P(Z=k_n)\\
+= & \sum_{i=1}^n{k_i P(Z=k_i)}
+\end{align*}
+der \underline{Erwartungswert}.
+\end{mydef}
+\begin{myexample}
+Erwartungswert beim Werfen eines Würfels
+\begin{center}\begin{tabular}{c | c c c c c c}
+k & 1 & 2 & 3 & 4 & 5 & 6\\
+\hline
+$P(Z=k)$ & $\frac{1}{6}$ & $\frac{1}{6}$ & $\frac{1}{6}$ & $\frac{1}{6}$ & $\frac{1}{6}$ & $\frac{1}{6}$
+\end{tabular}\end{center}
+ist dann
+\begin{equation}
+E(Z) = 1 \cdot \frac{1}{6} + 2 \cdot \frac{1}{6} + ... + 6 \cdot \frac{1}{6} = \frac{1}{6}(1+2+...+6) = \frac{21}{6} = 3.5
+\end{equation}
+\end{myexample}
+Wir finden sofort, dass der \underline{Erwartungswert linear} ist.
+\begin{equation}
+E(X+Y) = E(X) + E(Y)
+\end{equation}
+\begin{myexample}
+Wie gross ist der Erwartungswert beim Werfen von 4 Würfeln?\\
+Es ist $E(Z) = 3.5$ für einen Würfel und dadurch wird
+\begin{equation}
+E(x) = 4 \cdot 3.5 = 14
+\end{equation}
+der Erwartungswert (für die Augensumme) bei 4 Würfeln.
+\end{myexample}
+
+\section{Bernoulli-Experiment}
+(Jacob I. Bernoulli von Basel, 1654 bis 1705, Verfasser von \lq\lq{}ars conjectandi\rq\rq{}, die Kunst des Zufalls)\\\\
+Wernn wir einen Würfel 100-mal werfen und fragen wann zum ersten mal die Sechs aufgetreten ist, wenn wir eine Münze fünfzigmal werden und fragen wie oft \lq\lq{}Zahl\rq\rq{} vorgekommen ist, wenn wir aus einer Sendung 100 Werksücke wählen und fragen, wieviele davon fehlerhaft sind, so machen wir ein Zufallsexperiment mit $n$ Versuchen.
+\begin{mydef}
+In einem Experiment werden $n$ Versuche durchgeführt, wobei bei jedem Versuch das Ereignis $A$ mit der Wahrscheinlichkeit $p$ eintreten oder mit der Wahrscheinlichkeit $q = 1-p$ nicht eintreten kann.\\
+Sind diese Verscuhe unabhängig, so heisst diese Versuchsreihe vom Umfang $a$ ein \underline{Bernoulli-Experiment}.
+\end{mydef}
+Wir können also das Experiment direkt mit den Wahrscheinlichkeiten
+\begin{quote}
+W\rq{}keit: qqpqppq...q\\
+binär: 00101001...1
+\end{quote}
+beschreiben und sprechen von einer \underline{Bernoulli-Kette}.
+\begin{mydef}
+Eine Zufallsvariable $Z$, welche die Anzahl der notwendigen Schritte bis zum erstmaligen Eintreten des Ereignis $A$ mit Wahrscheinlichkeit $p = P(A)$ in einem Bernoulli-Experiment bestimmt, heisst \underline{geometrisch verteilt}.
+\end{mydef}
+Es ist also
+\begin{equation}
+P(Z=k) = (1-p)^{k-1} \cdot p
+\end{equation}
+Weiter ist also
+\begin{equation}
+E(Z) = \sum_{k=1}^{\infty}{k \cdot (1-p)^{k-1} \cdot p}
+\end{equation}
+mit $q = 1-p$ wird
+\begin{equation}
+E(Z) = p \cdot \sum_{k=1}^{\infty}{k \cdot q^{k-1}} = p \cdot (1 + 2q + 3q^2 + ...)
+\end{equation}
+Es ist $1, q, q^2, q^3, ...$ eine geometrische Folge mit der Teilsumme
+\begin{equation}
+s_n = 1 + q + q^2 + q^3 + ... + q^{n-1} = \frac{q^{n-1} - 1}{q - 1}
+\end{equation}
+Damit wird die \underline{geometrische Reihe}
+\begin{equation}
+1 + q + q^2 + q^3 + ... = \lim_{n \to \infty}{\frac{q^{n-1}-1}{q-1}} = \frac{-1}{q-1}
+\end{equation}
+falls $-1 < q < 1$, was für die Wahrscheinlichkeit $q$ zutrifft. Also ist
+\begin{equation}
+1 + q + q^2 + q^3 + q^4 + ... = \frac{1}{1-q}
+\end{equation}
+So wird
+\begin{align*}
+E(Z) = & p (1 + q + q^2 + q^3 + ...) + p ( q + 2q^2 + ...)\\
+= & p(1 + q + q^2 + ...) + p(q + q^2 + q^3 + ...) + p (q^2 + 2q^3 + 3q^4 + ...)\\
+= & p(1 + q + q^2 + ...) + p(q + q^2 + q^3 + ...) + p (q^2 + q^3 + ...) + p ( q^3 + 2 q^4 + ...)\\
+= & p \cdot \frac{1}{1-q} + pq\frac{1}{1-q} + pq^2\frac{1}{1-q} + pq^3\frac{1}{1-q} + ...\\
+= & \frac{1}{1-q} ( p + pq + pq^2 + pq^3 + ...)\\
+= & \frac{1}{1-q} \cdot \frac{p}{1-q}\\
+= & \frac{p}{(1-q)^2} \mbox{ und 1-q=p}
+\end{align*}
+also
+\begin{equation}
+E(Z) = \frac{p}{p^2} = \frac{1}{p}
+\end{equation}
+Beim Würfeln ist also
+\begin{equation}
+E(Z) = \frac{1}{\frac{1}{6}} = 6
+\end{equation}
+Das bedeutet also, dass man im Schnitt 6-mal würfeln muss, damit man eine 6 würfelt.
+\begin{mydef}
+Eine Zufallsvariable Z für welche
+\begin{equation}
+P(Z=x) = \frac{\binom{R}{x} \cdot \binom{B}{y}}{\binom{R+B}{x+y}}
+\end{equation}
+gilt, heisst \underline{hypergeometrisch verteilt}. Es ist
+\begin{equation}
+E(Z) = (x+y) \cdot \frac{B}{B+R}
+\end{equation}
+wenn $Z$ die Anzahl blauer Kugeln bestimmt.
+\end{mydef}
+\section{Varianz}
+Wir betrachten zwei Zufallsvariablen $X$ und $Y$ mit
+\begin{enumerate}
+\item
+X:
+\begin{center}\begin{tabular}{c | c c c}
+k & -1 & 0 & 1\\
+\hline
+$P(Z=k)$ & $\frac{1}{4}$ & $\frac{1}{2}$ & $\frac{1}{4}$
+\end{tabular}\end{center}
+\item
+Y:
+\begin{center}\begin{tabular}{c | c c c c c}
+m & -4 & -2 & 0 & 2 & 4\\
+\hline
+$P(Z=m)$ & $\frac{1}{4}$ & $\frac{1}{5}$ & $\frac{1}{10}$ & $\frac{1}{5}$ & $\frac{1}{4}$
+\end{tabular}\end{center}
+\end{enumerate}
+besitzen die Verteilung
+\\\\TODO: Grafik\\\\
+und die Erwartungswerte
+\begin{equation}
+E(x) = (-1) \cdot \frac{1}{4} + 0 \cdot \frac{1}{2} + 1 \cdot \frac{1}{4} = 0
+\end{equation}
+\begin{equation}
+E(x) = (-4) \cdot \frac{1}{4} + (-2) \cdot \frac{1}{5} + 0 \cdot \frac{1}{10} + 2 \cdot \frac{1}{4} + 4 \cdot \frac{1}{4} = 0
+\end{equation}
+Kennen wir also nur die Erwartungswerte, so wissen wir nicht wie die Werte verteilt sind.\\
+Wir wählen deshalb für jeden Wert $x_i$ die Abweichung von $E(x)$ und bestimmen dadurch den Durchschnitt. Bis $X$ wäre dies also
+\begin{equation}
+\frac{(0+1) + (0-0) + (0-1)}{3} = 0 \mbox{ !?}
+\end{equation}
+Besser ist es also mit
+\begin{equation}
+\frac{|0+1| + |0-0| + |0-1|}{3} = \frac{2}{3}
+\end{equation}
+Historisch gesehen war es einfacher mit $\sqrt{a^2}$ zu rechnen, anstatt mit $|a|$. Deshalb definieren wir unser \underline{Mass für die Streuung} mit
+\begin{equation}
+\sigma^2 := Var(Z) := \sum_{i=1}^n{(k_i - E(Z))^2 \cdot p_i}
+\end{equation}
+die \underline{Varianz} der Zufallsvariablen $Z$, wenn
+\begin{equation}
+P_i = P(Z=k_i)
+\end{equation}
+$\sigma$ heisst \underline{Standardabweichung}.\\
+Im Beispiel wird so
+\begin{equation}
+Var(x) = \sigma_x^2 = \frac{1}{4}(0-(-1))^2 + \frac{1}{2}(0-0)^2 + \frac{1}{4}(0-1)^2 = \frac{1}{2}
+\end{equation}
+also
+\begin{equation}
+\sigma = \sqrt{\frac{1}{2}} = 0.707
+\end{equation}
+und weiter
+\begin{align*}
+Var(Y) = & \sigma^2_y = (\frac{1}{4}(0-(-4))^2 + \frac{1}{5}(0-(-2))^2 + \frac{1}{10}(0-0)^2) \cdot 2\\
+= & (4 + \frac{4}{5}) \cdot 2 = \frac{48}{5} = 9.6
+\end{align*}
+also
+\begin{equation}
+\sigma = \sqrt{9.6} = 3.1
+\end{equation}
+Bei einer geometrisch verteilten Zufallsvariable wird
+\begin{equation}
+Var(Z) = \frac{q}{p^2}
+\end{equation}
+also bei \lq\lq{}Eine mit Weile\rq\rq{} ist
+\begin{equation}
+Var(Z) = \frac{\frac{5}{6}}{(\frac{1}{6})^2} = \frac{5}{6} \cdot \frac{36}{1} = 30
+\end{equation}
+und damit wird $\sigma = 5.47$
+
+
+\begin{myexample}
+\end{myexample}
+\begin{mydef}
+\end{mydef}
 \end{document}
