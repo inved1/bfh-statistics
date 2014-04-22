@@ -324,7 +324,7 @@ TODO: Grafik mit Zurücklegen\\\\
 p = \frac{4}{7} \cdot \frac{4}{7} \cdot \frac{3}{7} + \frac{4}{7} \cdot \frac{4}{7} \cdot \frac{3}{7} + \frac{4}{7} \cdot \frac{4}{7} \cdot \frac{3}{7}
 \end{equation}
 \begin{equation}
-p = 3 (\frac{4}{7})^2(\frac{3}{7})^1 = 3 \cdot \frac{16}{49} \cdot \frac{3}{7} = \frac{144}{343}
+p = 3 \left(\frac{4}{7}\right)^2\left(\frac{3}{7}\right)^1 = 3 \cdot \frac{16}{49} \cdot \frac{3}{7} = \frac{144}{343}
 \end{equation}
 \item
 TODO: Grafik\\\\
@@ -452,7 +452,7 @@ p = 1 - \frac{365 \cdot 364 \cdot 363 \cdot ... \cdot (365-n + 1)}{365^n}
 \end{equation}
 \begin{myexample}
 Ein Schütze trifft die Scheibe mit einer Wahrscheinlichkeit $p = \frac{5}{6}$. Wie gross ist die Wahrscheinlichkeit, dass er bei 4 Schüssen mindestens einmal trifft?\\\\
-Mindestens einmal bedeutet $P(T=1) + P(T=2) + P(...$\\
+Mindestens einmal bedeutet $P(T=1) + P(T=2) + P(T=3) + ...$\\
 Gegenereignis: Keinmal treffen, d.h. $P(T=0) = \frac{1}{6}$\\\\
 So ist dann
 \begin{equation}
@@ -460,7 +460,7 @@ P(T\geq1) = 1 - P(T=0)
 \end{equation}
 in 4 Schüssen, also
 \begin{align*}
-P(T \geq 1) =& 1 - (\frac{1}{6})^4\\
+P(T \geq 1) =& 1 - \left(\frac{1}{6}\right)^4\\
 =& 1 - \frac{1}{1296} = \frac{1293}{1296}
 \end{align*}
 Ein anderer Schütze trifft die Scheibe mit $p = \frac{3}{5}$. Wie oft muss er schiessen, um mit einer Wahrscheinlichkeit von mindestens $0.99$ einmal zu treffen?
@@ -469,10 +469,10 @@ P(T \geq 1) = 1 - P(T=0)
 \end{equation}
 In x Schüssen also
 \begin{align*}
-P(T \geq 1) =& 1 - (\frac{2}{5})^x\\
-\longrightarrow 1 - (\frac{2}{5})^x \geq & 0.99\\
-\longrightarrow 1 - (\frac{2}{5})^x \geq & \frac{99}{100}\\
-\longrightarrow \frac{1}{100} \geq & (\frac{2}{5})^x \\
+P(T \geq 1) =& 1 - \left(\frac{2}{5}\right)^x\\
+\longrightarrow 1 - \left(\frac{2}{5}\right)^x \geq & 0.99\\
+\longrightarrow 1 - \left(\frac{2}{5}\right)^x \geq & \frac{99}{100}\\
+\longrightarrow \frac{1}{100} \geq & \left(\frac{2}{5}\right)^x \\
 \longrightarrow \log{\frac{1}{100}} \geq & x \cdot \log{\frac{2}{5}} \\
 \longrightarrow -2 \geq & x \cdot \log{\frac{2}{5}} \\
 \longrightarrow -\frac{2}{log{\frac{2}{5}}} \geq & x
@@ -690,6 +690,7 @@ also auch 4 Faktoren im Zähler, d.h.
 \begin{equation}
 \binom{9}{4} = \frac{9 \cdot 8 \cdot 7 \cdot 6}{4!} = \frac{9 \cdot 8 \cdot 7 \cdot 6}{4 \cdot 3 \cdot 2 \cdot 1} = 9 \cdot 7 \cdot 2 = 126
 \end{equation}
+
 \section{Urnenmodell 2}
 MIt Hilfe der Binominalkoeffizienten können wir das Ziehen von Kugeln aus einer Urne schneller berechnen. Sind in einer Urne 4 rote und 5 blaue Kugeln und werden ohne Zurücklegen Kugeln gezogen, so ist die Wahrscheinlichkeit zwei rote und drei blaue Kugeln zu ziehen
 \begin{equation}
@@ -709,7 +710,7 @@ Ziehen wir mit Zurücklegen wieder wie vorhin zwei rote und drei blaue aus einer
 \\\\TODO: Grafik\\\\
 Die Kugeln rot-rot-blau-blau-blau können auf $\frac{5!}{2! \cdot 3!}$ Arten angeordnet werden. Aber $\frac{5!}{2! \cdot 3!} = \binom{5}{2}$, also
 \begin{equation}
-p = \binom{5}{2} (\frac{4}{9})^2 (\frac{5}{9})^3
+p = \binom{5}{2} \left(\frac{4}{9}\right)^2 \left(\frac{5}{9}\right)^3
 \end{equation}
 
 \chapter{Verteilungen}
@@ -937,8 +938,8 @@ also
 \end{equation}
 und weiter
 \begin{align*}
-Var(Y) = & \sigma^2_y = (\frac{1}{4}(0-(-4))^2 + \frac{1}{5}(0-(-2))^2 + \frac{1}{10}(0-0)^2) \cdot 2\\
-= & (4 + \frac{4}{5}) \cdot 2 = \frac{48}{5} = 9.6
+Var(Y) = & \sigma^2_y = \left(\frac{1}{4}(0-(-4))^2 + \frac{1}{5}(0-(-2))^2 + \frac{1}{10}(0-0)^2\right) \cdot 2\\
+= & \left(4 + \frac{4}{5}\right) \cdot 2 = \frac{48}{5} = 9.6
 \end{align*}
 also
 \begin{equation}
@@ -950,7 +951,7 @@ Var(Z) = \frac{q}{p^2}
 \end{equation}
 also bei \lq\lq{}Eine mit Weile\rq\rq{} ist
 \begin{equation}
-Var(Z) = \frac{\frac{5}{6}}{(\frac{1}{6})^2} = \frac{5}{6} \cdot \frac{36}{1} = 30
+Var(Z) = \frac{\frac{5}{6}}{\left(\frac{1}{6}\right)^2} = \frac{5}{6} \cdot \frac{36}{1} = 30
 \end{equation}
 und damit wird $\sigma = 5.47$
 
@@ -1013,11 +1014,11 @@ eine \underline{binominalverteilte} Zufallsvariable.
 \begin{myexample}
 Wie gross ist die Wahrscheinlichkeit, beim Werfen von 23 Münzen genau 11-mal \lq\lq{}Kopf\rq\rq{} zu erhalten?
 \begin{equation}
-P(K=11) = \binom{23}{11} p^11 q^12
+P(K=11) = \binom{23}{11} p^{11} q^{12}
 \end{equation}
 mit $p = \frac{1}{2}$ (und $q = 1 - \frac{1}{2} = \frac{1}{2}$), also
 \begin{equation}
-P(K=11) = \binom{23}{11} (\frac1{1}{2})^23 = 0.161
+P(K=11) = \binom{23}{11} \left(\frac{1}{2}\right)^{23} = 0.161
 \end{equation}
 \end{myexample}
 \underline{Erwartungswert}: Nach der Definition ist
@@ -1062,7 +1063,7 @@ Var(Z) = n \cdot p \cdot q
 
 \section{Poisson-Verteilung}
 (Simon Denis Poisson, 1781 bis 1840, Paris)\\\\
-Für grosse $n$ und kleines $p$ soll die Binominalverteilung angenährt werden. Es ist
+Für grosse $n$ und kleines $p$ soll die Binominalverteilung angenähert werden. Es ist
 \begin{equation}
 P(Z=k) = \binom{n}{k} p^k q^{n-k}
 \end{equation}
@@ -1076,24 +1077,24 @@ p = \frac{\lambda}{n}, q = 1 - \frac{\lambda}{n}
 \end{equation}
 Damit wird
 \begin{align*}
-P(Z=k) = & \binom{n}{k} (\frac{\lambda}{n})^k (1 - \frac{\lambda}{n})^{n-k}\\
-= & \frac{n!}{k!(n-k)!} (\frac{\lambda}{n})^k (1 - \frac{\lambda}{n})^{n-k}\\
-= & \frac{n (n-1)(n-2) ... (n-k+1)}{k!} \cdot \frac{\lambda^k}{n^k} (1 - \frac{\lambda}{n})^{n-k}\\
-= & \frac{n (n-1)(n-2) ... (n-k+1)}{n^k} \cdot \frac{\lambda^k}{k!} (1 - \frac{\lambda}{n})^{n-k}\\
-= & \frac{n}{n} \cdot \frac{n-1}{n} \cdot \frac{n-2}{n} \cdot ... \cdot \frac{n-k+1}{n} \cdot \frac{\lambda^k}{k!} (1 - \frac{\lambda}{n})^{n-k}\\
-= & (1- \frac{1}{n})(1- \frac{2}{n}) ... (1 - \frac{k-1}{n})(1- \frac{\lambda}{n})^n \cdot (1- \frac{\lambda}{n})^{-k} \cdot \frac{\lambda^k}{k!}
+P(Z=k) = & \binom{n}{k} \left(\frac{\lambda}{n}\right)^k \left(1 - \frac{\lambda}{n}\right)^{n-k}\\
+= & \frac{n!}{k!(n-k)!} \left(\frac{\lambda}{n}\right)^k \left(1 - \frac{\lambda}{n}\right)^{n-k}\\
+= & \frac{n (n-1)(n-2) ... (n-k+1)}{k!} \cdot \frac{\lambda^k}{n^k} \left(1 - \frac{\lambda}{n}\right)^{n-k}\\
+= & \frac{n (n-1)(n-2) ... (n-k+1)}{n^k} \cdot \frac{\lambda^k}{k!} \left(1 - \frac{\lambda}{n}\right)^{n-k}\\
+= & \frac{n}{n} \cdot \frac{n-1}{n} \cdot \frac{n-2}{n} \cdot ... \cdot \frac{n-k+1}{n} \cdot \frac{\lambda^k}{k!} \left(1 - \frac{\lambda}{n}\right)^{n-k}\\
+= & (1- \frac{1}{n})(1- \frac{2}{n}) ... (1 - \frac{k-1}{n})\left(1- \frac{\lambda}{n}\right)^n \cdot \left(1- \frac{\lambda}{n}\right)^{-k} \cdot \frac{\lambda^k}{k!}
 \end{align*}
 Für $n \to \infty$ wird
 \begin{align*}
-(1-\frac{1}{n}) \longrightarrow & 1, (1-\frac{2}{n}) \longrightarrow 1, ...\\
-(1- \frac{k-1}{n}) \longrightarrow & 1 \quad \mbox{und}\\
-(1- \frac{\lambda}{n})^k \longrightarrow & 1 \quad \mbox{und}\\
-(1- \frac{\lambda}{n})^n \longrightarrow & ?
+\left(1-\frac{1}{n}\right) \longrightarrow & 1, \left(1-\frac{2}{n}\right) \longrightarrow 1, ...\\
+\left(1- \frac{k-1}{n}\right) \longrightarrow & 1 \quad \mbox{und}\\
+\left(1- \frac{\lambda}{n}\right)^k \longrightarrow & 1 \quad \mbox{und}\\
+\left(1- \frac{\lambda}{n}\right)^n \longrightarrow & ?
 \end{align*}
 Dieser Ausdruck erinnert an
 \begin{align*}
-\lim_{n \to \infty}{(1 + \frac{1}{n})^n} & =  e \quad \mbox{also}\\
-\lim_{n \to \infty}{(1 - \frac{\lambda}{n})^n} & = e^{-\lambda}
+\lim_{n \to \infty}{\left(1 + \frac{1}{n}\right)^n} & =  e \quad \mbox{also}\\
+\lim_{n \to \infty}{\left(1 - \frac{\lambda}{n}\right)^n} & = e^{-\lambda}
 \end{align*}
 Damit wird
 \begin{equation}
@@ -1126,7 +1127,7 @@ P(Z=10) = e^{-9} \frac{9^{10}}{10!}
 \item
 Das Ereignis B tritt mit $p = \frac{1}{100}$ ein. Wie gross ist die Wahrscheinlichkeit, dass bei 5000 Versuchen genau 70-mal das Ereignis eintritt?
 \begin{equation}
-P(Z=70) = \binom{5000}{70} (\frac{1}{100})^{70} (\frac{99}{100})^{4930}
+P(Z=70) = \binom{5000}{70} \left(\frac{1}{100}\right)^{70} \left(\frac{99}{100}\right)^{4930}
 \end{equation}
 und mit $\lambda = n \cdot p = 5000 \cdot \frac{1}{100} = 50$ wird
 \begin{equation}
