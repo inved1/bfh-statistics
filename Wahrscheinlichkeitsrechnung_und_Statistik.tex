@@ -25,6 +25,7 @@
 
 \begin{document}
 \maketitle
+\tableofcontents
 \chapter{Wahrscheinlichkeitsrechnung}
 \section{Definitionen}
 Wir führen ein Experiment wie
@@ -1072,10 +1073,65 @@ und es sei
 Dann ist
 \begin{equation}
 p = \frac{\lambda}{n}, q = 1 - \frac{\lambda}{n}
-\end{equation}•
-
-\begin{myexample}
-\end{myexample}
+\end{equation}
+Damit wird
+\begin{align*}
+P(Z=k) = & \binom{n}{k} (\frac{\lambda}{n})^k (1 - \frac{\lambda}{n})^{n-k}\\
+= & \frac{n!}{k!(n-k)!} (\frac{\lambda}{n})^k (1 - \frac{\lambda}{n})^{n-k}\\
+= & \frac{n (n-1)(n-2) ... (n-k+1)}{k!} \cdot \frac{\lambda^k}{n^k} (1 - \frac{\lambda}{n})^{n-k}\\
+= & \frac{n (n-1)(n-2) ... (n-k+1)}{n^k} \cdot \frac{\lambda^k}{k!} (1 - \frac{\lambda}{n})^{n-k}\\
+= & \frac{n}{n} \cdot \frac{n-1}{n} \cdot \frac{n-2}{n} \cdot ... \cdot \frac{n-k+1}{n} \cdot \frac{\lambda^k}{k!} (1 - \frac{\lambda}{n})^{n-k}\\
+= & (1- \frac{1}{n})(1- \frac{2}{n}) ... (1 - \frac{k-1}{n})(1- \frac{\lambda}{n})^n \cdot (1- \frac{\lambda}{n})^{-k} \cdot \frac{\lambda^k}{k!}
+\end{align*}
+Für $n \to \infty$ wird
+\begin{align*}
+(1-\frac{1}{n}) \longrightarrow & 1, (1-\frac{2}{n}) \longrightarrow 1, ...\\
+(1- \frac{k-1}{n}) \longrightarrow & 1 \quad \mbox{und}\\
+(1- \frac{\lambda}{n})^k \longrightarrow & 1 \quad \mbox{und}\\
+(1- \frac{\lambda}{n})^n \longrightarrow & ?
+\end{align*}
+Dieser Ausdruck erinnert an
+\begin{align*}
+\lim_{n \to \infty}{(1 + \frac{1}{n})^n} & =  e \quad \mbox{also}\\
+\lim_{n \to \infty}{(1 - \frac{\lambda}{n})^n} & = e^{-\lambda}
+\end{align*}
+Damit wird
+\begin{equation}
+P(Z=k) = e^{-\lambda} \cdot \frac{\lambda^k}{k!}
+\end{equation}
+für $n \to \infty$.
 \begin{mydef}
+Ist $Z$ eine Zufallsvariable, welche die Werte $0, 1, 2, ..., k$ mit der Wahrscheinlichkeit
+\begin{equation}
+P(Z=k) = e^{-\lambda} \cdot \frac{\lambda^k}{k!}
+\end{equation}
+annimmt, so heisst $Z$ \underline{poisson-verteilt}.
 \end{mydef}
+Wie gut nähert die Poisson-Verteilung die Binomialverteilung?
+\begin{enumerate}
+\item
+Ereignis A tritt mit $p = 0.3$ ein. Wie gross ist die Wahrscheinlichkeit, das bei 30 Versuchen genau 10-mal A eintritt?\\\\
+$P(Z=10)$ mit Binomialverteilung ist
+\begin{equation}
+P(Z=10) = \binom{30}{10} 0.3^{10} 0.7^{20}
+\end{equation}
+und mit Poisson-Verteilung ist
+\begin{equation}
+\lambda = n \cdot p = 30 \cdot 0.3 =9
+\end{equation}
+und so
+\begin{equation}
+P(Z=10) = e^{-9} \frac{9^{10}}{10!}
+\end{equation}
+\item
+Das Ereignis B tritt mit $p = \frac{1}{100}$ ein. Wie gross ist die Wahrscheinlichkeit, dass bei 5000 Versuchen genau 70-mal das Ereignis eintritt?
+\begin{equation}
+P(Z=70) = \binom{5000}{70} (\frac{1}{100})^{70} (\frac{99}{100})^{4930}
+\end{equation}
+und mit $\lambda = n \cdot p = 5000 \cdot \frac{1}{100} = 50$ wird
+\begin{equation}
+P(Z=70) = e^{-50} \frac{50^{70}}{70!}
+\end{equation}
+\end{enumerate}
+Die Poisson-Verteilung ist die Verteilung der seltenen Ereignisse; wir wählen sie, wenn entweder \lq\lq{}$n > 10$ und $p < 0.05$\rq\rq{} oder \lq\lq{}$n > 100$ und $p < 0.1$\rq\rq{}.
 \end{document}
