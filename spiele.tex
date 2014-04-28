@@ -1,0 +1,94 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc} 
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{floatrow}
+\usepackage{enumerate}
+
+\title{Spiele}
+\author{Simon Krenger}
+
+\begin{document}
+\section{Lotto}
+Schweizer Lotto (6 aus 42 und 6 Glückszahlen)\\
+\underline{Ein Sechser}: Günstiger Fall 1
+\begin{equation}
+p = \frac{1}{\binom{42}{6}} = 1,9 * 10^{-7}
+\end{equation}
+\underline{Ein Fünfer}: 5 der 6 und noch eine zusätzliche, aber nicht diejenige die einen Sechser gibt
+\begin{equation}
+p = \frac{\binom{6}{5} \cdot 36}{\binom{42}{6}} = 4,1 * 10^{-5}
+\end{equation}
+\underline{Ein Vierer}:
+\begin{equation}
+p = \frac{\binom{6}{4} \cdot \binom{36}{2}}{\binom{42}{6}} = 0.0018
+\end{equation}
+
+\section{Jass}
+\underline{Vier Bauern (Asse, Könige, Damen, ...)} : 4 Bauern und noch 5 Karten vom Rest
+\begin{equation}
+p = \frac{\binom{32}{5}}{\binom{36}{9}} = 0.002
+\end{equation}
+\underline{Ein Dreiblatt vom Herz-As}: Das Dreiblatt und dann noch 6 vom Rest, aber nicht Herz-Bube
+\begin{equation}
+p = \frac{\binom{33-1}{6}}{\binom{36}{9}} = 0.009
+\end{equation}
+\underline{Ein Dreiblatt vom Pik-König}: Nicht das As und 10 von Pik	
+\begin{equation}
+p = \frac{\binom{31}{6}}{\binom{36}{9}} = 0.007
+\end{equation}
+\underline{50 vom Kreuz-König weisen}: Nicht das As und nicht die 9
+\begin{equation}
+p = \frac{\binom{30}{5}}{\binom{36}{9}}
+\end{equation}
+\underline{100 vom Kreuz-König weisen}: Nicht das As und nicht die 8
+\begin{equation}
+p = \frac{\binom{29}{4}}{\binom{36}{9}} = \frac{117}{463670} = 0.000252
+\end{equation}
+
+\section{Poker}
+Jeder Spieler erhält 5 von 52 Karten. Das sind $\binom{52}{5} = 2 598 960$ mögliche Fälle.\\\\
+\underline{Royal Flush}: Karten A, K, Q, J, 10 der gleichen Farbe
+\begin{equation}
+p = \frac{4}{\binom{52}{5}} = 0.0000015
+\end{equation}
+\underline{Straight Flush}: Fünf aufeinanderfolgende Karten derselben Farbe. Es gibt 9 solche Strassen pro Farbe
+\begin{equation}
+p = \frac{4 \cdot 9}{\binom{52}{5}} = 0.000014
+\end{equation}
+\underline{Four of a kind (Vierling, Poker)}: Vier gleiche Karten
+\begin{equation}
+p = \frac{13 \cdot \binom{48}{1}}{\binom{52}{5}} = 0.00024
+\end{equation}
+\underline{Full House}: Drilling und ein Paar (13 Karten zur Auswahl, also $\binom{4}{2} = 6$ Möglichkeiten. Für das Tripel haben wir dann noch 12 Kartentypen zur Auswahl und so $\binom{4}{3} = 4$ Möglichkeiten. Es gibt somit $13 \cdot 6 \cdot 12 \cdot 4 = 3744$ verschiedene Full Houses.
+\begin{equation}
+p = \frac{13 \cdot 6 \cdot 12 \cdot 4}{\binom{52}{5}} = \frac{3744}{\binom{52}{5}} = 0.0014
+\end{equation}
+\underline{Flush}: Fünf Karten derselben Farbe
+\begin{equation}
+p = \frac{4 \cdot (\binom{13}{5} - 1 - 9)}{\binom{52}{5}} = 0.002
+\end{equation}
+\underline{Straight}: Fünf aufeinanderfolgende Karten mit verschiedenen Farben. Es gibt 10 solche Straights pro Figur und pro Platz eine der 4 Farben, also $10 \cdot 4^5$ wovon die Flushes zu subtrahieren sind.
+\begin{equation}
+p = \frac{10 \cot 4^5 - 40}{\binom{52}{5}} = \frac{10 200}{\binom{52}{5}} = 0.0039
+\end{equation}
+\underline{Drilling}: Nicht vierte der Drillingskarten und kein Paar mehr (Full House)
+\begin{equation}
+p = \frac{13 \cdot \binom{4}{3} \cdot (\binom{48}{2} - 12 \binom{4}{2})}{\binom{52}{5}} = 0.021
+\end{equation}
+\underline{Zwei Paare}
+\begin{equation}
+p = \frac{\binom{13}{2} \binom{4}{2} \binom{4}{2} \cdot 44}{\binom{52}{5}} = 0.047
+\end{equation}
+\underline{Ein Paar}: 13 Kartentypen für das Paar mit 2 von 4 Karten, also $13 \cdot \binom{4}{2}$ Möglichkeiten. Die restlichen so, dass kein Full House und kein zweites Paar entsteht.
+\begin{equation}
+p = \frac{13 \cdot \binom{4}{2} \binom{12}{3} \cdot 4^3}{\binom{52}{5}} = 0.42
+\end{equation}
+\underline{High Card}
+\begin{equation}
+p = \frac{1 302 540}{\binom{52}{5}} = 0.501
+\end{equation}
+\end{document}
