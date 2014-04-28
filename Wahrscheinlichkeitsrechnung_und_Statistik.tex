@@ -1135,4 +1135,46 @@ P(Z=70) = e^{-50} \frac{50^{70}}{70!}
 \end{equation}
 \end{enumerate}
 Die Poisson-Verteilung ist die Verteilung der seltenen Ereignisse; wir wählen sie, wenn entweder \lq\lq{}$n > 10$ und $p < 0.05$\rq\rq{} oder \lq\lq{}$n > 100$ und $p < 0.1$\rq\rq{}.
+
+\section{Dichte}
+Eine \underline{diskrete Zufallsvariable} nimmt endlich oder abzählbar-unendlich viele Werte $k_1, k_2, k_3, ...$ an.\\
+Eine \underline{stetige Zufallsvariable} nimmt überabzählbar-unendlich viele Werte $k \in \mathbb{R}$ an.\\
+Wir suchen eine stetige Zufallsvariable, welche die Binomialverteilung annähert.\\
+Welche Bedingungen muss die Zufallsvariable erfüllen?
+\\\\
+\underline{Es muss $f(x) \geq 0$ sein}.
+\begin{mydef}
+Ist $Z$ eine Zufallsvariable, so heisst
+\begin{equation}
+F: \mathbb{R} \longrightarrow [0;1] \mbox{ mit } F(x) = P(Z \leq x)
+\end{equation}
+die Verteilungsfunktion.
+\end{mydef}
+Wir können mit einer stetigen Zufallsvariable nicht $P(Z=x)$ berechnen, da könnte der Wert sogar $>1$ werden und müssen deshalb $P(Z \leq x)$ bestimmen. Bei der Binomialverteilung ist
+\begin{align*}
+P(Z \leq x) =  & P(Z=0) + P(Z=1) + ... + P(Z=x)\\
+= & \sum_{k=0}^x{P(Z=x)}\\
+= & \sum_{k=0}^x{\binom{n}{k} p^k q^{n-k}}
+\end{align*}
+und
+\begin{equation}
+P(Z \leq n) =  \sum_{k=0}^n{\binom{n}{k} p^k q^{n-k}} = 1
+\end{equation}
+, denn $(p+q)^n = (p+1-p)^n = 1^n$.\\
+Bei einer stetigen Zufallsvariable ist also
+\begin{equation}
+P(Z \leq x) = \lim_{n \to \infty}{\sum_{k=0}^x{\binom{n}{k} p^k q^{n-k}}} = \int_{-\infty}^{x}{f(t)} \mathrm{d}t
+\end{equation}
+und damit ist
+\begin{equation}
+\int_{-\infty}^{\infty}{f(t)}\mathrm{d}t = 1
+\end{equation}
+die zweite Bedingung.
+\begin{mydef}
+Ist
+\begin{equation}
+F(x) = P(Z \leq x) = \int_{-\infty}^{x}{f(t)} \mathrm{d}t
+\end{equation}
+, so heisst die Funktion $f$ \underline{Dichtefunktion} und $f(x)$ \underline{Dichte}.
+\end{mydef}
 \end{document}
