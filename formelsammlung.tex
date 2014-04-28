@@ -1,0 +1,317 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc} 
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{floatrow}
+\usepackage{enumerate}
+
+\newtheorem{mydef}{Definition}
+
+\title{Formelsammlung}
+\author{Simon Krenger}
+
+\begin{document}
+\section{Defintionen}
+\begin{mydef}
+Die Menge
+\begin{equation}
+\Omega := \{ \omega_1, \omega_2, \omega_3, ..., \omega_n \}
+\end{equation}
+heisst \underline{Stichprobenraum} (Ereignisraum), wenn jedem Versuchsausgang höchstens ein Element $\omega_i$ aus $\Omega$ zugeordnet ist.
+\end{mydef}
+\begin{mydef}
+Jede Teilmenge von $\Omega$ heisst \underline{Ereignis}. Die leere Menge $\emptyset$ heisst \underline{unmögliches Ereignis} und $\Omega$ heisst \underline{sicheres Ereignis}.\\
+Enthält ein Ereignis $E = \{ a \}$ nur ein einziges Element, so heisst $E$ ein \underline{Elementarereignis}.
+\end{mydef}
+\begin{mydef}
+\underline{1. Zählprinzip}: Es gibt $n^k$ Möglichkeiten um $n$ Elemente auf $k$ Plätze (in Gruppen zu $k$ Elementen) zu verteilen.
+\end{mydef}
+\begin{mydef}
+Wir nennen $P(\Omega)$ den \underline{Ereignisraum}.
+\end{mydef}
+\begin{mydef}
+Zwei Ereignisse heissen (stochastisch) \underline{unabhängig}, wenn
+\begin{equation}
+P(A \cap B) = P(A) \cdot P(B)
+\end{equation}
+\end{mydef}
+\begin{mydef}
+\underline{2. Zählprinzip:} Wählen wir $k$ aus $n$ Elementen, so gibt es also
+\begin{equation}
+n (n-1) (n-2) ... (n-k+1)
+\end{equation}
+Möglichkeiten, wenn die Reihenfolge wesentlich ist.
+\end{mydef}
+\begin{mydef}
+\underline{Gegenwahrscheinlichkeit}: Es ist also
+\begin{equation}
+P(\overline{A}) = 1 - P(A)
+\end{equation}
+heisst die Gegenwahrscheinlichkeit von A.
+\end{mydef}
+\begin{mydef}
+Ist $n \in \mathbb{N}$, so heisst
+\begin{equation}
+n! := n \cdot (n-1) \cdot (n-2) \cdot ... \cdot 3 \cdot 2 \cdot 1
+\end{equation}
+die \underline{Fakultät} von $n$. Ausserdem ist $0! = 1$.
+\end{mydef}
+\begin{mydef}
+\underline{3. Zählprinzip:} Es gibt $n!$ Möglichkeiten um $n$ Elemente auf $n$ Plätze zu verteilen.
+\end{mydef}
+\begin{mydef}
+Für $k, n \in \mathbb{N}_{0}$ heisst
+\begin{equation}
+\binom{n}{k} = \frac{n!}{k!(n-k)!} \quad \mbox{mit } 0 \leq k \leq n
+\end{equation}
+ein \underline{Binominalkoeffizient} (\lq\lq{}n tief k\rq\rq{}).
+\end{mydef}
+\begin{mydef}
+\underline{4. Zählprinzip:} Eine Menge mit $n$ Elementen besitzt $\binom{n}{k}$ Teilmengen mit genau $k$ $(k \leq n)$ Elementen.\\\\
+Es gibt $\binom{n}{k}$ \underline{Kombinationen}, um aus einer Menge mit $n$ Elementen eine Teilmenge mit $k$ Elementen auszuwählen, wenn die Reihenfolge unwesentlich ist.
+\end{mydef}
+Eigenschaften der Binominalkoeffizienten
+\begin{enumerate}
+\item
+symmetrisch
+\begin{equation}
+\binom{n}{k} = \binom{n}{n-k}
+\end{equation}
+\item
+\begin{equation}
+\binom{n}{0} = \binom{n}{n} = 1
+\end{equation}
+\item
+\begin{equation}
+\binom{n}{1} = \binom{n}{n-1} = n
+\end{equation}
+\item
+\begin{equation}
+\binom{n}{k} + \binom{n}{k+1} = \binom{n+1}{k+1}
+\end{equation}
+\end{enumerate}
+\begin{mydef}
+Eine \underline{Zufallsvariable Z} ist eine Funktion
+\begin{equation}
+Z: \Omega \quad \longrightarrow \quad \mathbb{R}
+\end{equation}
+Als \underline{Verteilung} oder \underline{Wahrscheinlichkeitsfunktion} einer Zufallsvariablen Z bezeichnen wir
+\begin{equation}
+P(Z=k)
+\end{equation}
+\end{mydef}
+\begin{mydef}
+Nimmt eine Zufallsvariable Z die Werte $k_1, k_2, k_3, ..., k_n$ mit den Wahrscheinlichkeiten $p_1, p_2, p_3, ..., p_n$ an, so heisst
+\begin{align*}
+E(Z) = & k_1p_1 + k_2p_2 + k_3p_3 + ... + k_np_n\\
+= & k_1 P(Z=k_1) + k_2 P(Z=k_2) + ... + k_n P(Z=k_n)\\
+= & \sum_{i=1}^n{k_i P(Z=k_i)}
+\end{align*}
+der \underline{Erwartungswert}.
+\end{mydef}
+\begin{mydef}
+In einem Experiment werden $n$ Versuche durchgeführt, wobei bei jedem Versuch das Ereignis $A$ mit der Wahrscheinlichkeit $p$ eintreten oder mit der Wahrscheinlichkeit $q = 1-p$ nicht eintreten kann.\\
+Sind diese Verscuhe unabhängig, so heisst diese Versuchsreihe vom Umfang $a$ ein \underline{Bernoulli-Experiment}.
+\end{mydef}
+\begin{mydef}
+Eine Zufallsvariable $Z$, welche die Anzahl der notwendigen Schritte bis zum erstmaligen Eintreten des Ereignis $A$ mit Wahrscheinlichkeit $p = P(A)$ in einem Bernoulli-Experiment bestimmt, heisst \underline{geometrisch verteilt}.
+\end{mydef}
+\begin{mydef}
+Eine Zufallsvariable Z für welche
+\begin{equation}
+P(Z=x) = \frac{\binom{R}{x} \cdot \binom{B}{y}}{\binom{R+B}{x+y}}
+\end{equation}
+gilt, heisst \underline{hypergeometrisch verteilt}. Es ist
+\begin{equation}
+E(Z) = (x+y) \cdot \frac{B}{B+R}
+\end{equation}
+wenn $Z$ die Anzahl blauer Kugeln bestimmt.
+\end{mydef}
+\begin{mydef}Tritt in einem Bernoulli-Experiment das Ereignis $A$ mit Wahrscheinlichkeit $p$ ein und fragen wir nach der Wahrscheinlichkeit, dass $A$ k-mal in $n$ Versuchen aufgetreten ist, so ist die Wahrscheinlichkeit
+\begin{equation}
+P(Z=k) = \binom{n}{k} p^kq^{n-k} \quad , q=1-p
+\end{equation}
+eine \underline{binominalverteilte} Zufallsvariable.
+\end{mydef}
+\begin{mydef}
+Ist $Z$ eine Zufallsvariable, welche die Werte $0, 1, 2, ..., k$ mit der Wahrscheinlichkeit
+\begin{equation}
+P(Z=k) = e^{-\lambda} \cdot \frac{\lambda^k}{k!}
+\end{equation}
+annimmt, so heisst $Z$ \underline{poisson-verteilt}.
+\end{mydef}
+\begin{mydef}
+Ist $Z$ eine Zufallsvariable, so heisst
+\begin{equation}
+F: \mathbb{R} \longrightarrow [0;1] \mbox{ mit } F(x) = P(Z \leq x)
+\end{equation}
+die Verteilungsfunktion.
+\end{mydef}
+\begin{mydef}
+Ist
+\begin{equation}
+F(x) = P(Z \leq x) = \int_{-\infty}^{x}{f(t)} \mathrm{d}t
+\end{equation}
+, so heisst die Funktion $f$ \underline{Dichtefunktion} und $f(x)$ \underline{Dichte}.
+\end{mydef}
+
+
+
+\section{Laplace-Würfel: Augensummen}
+\subsection{2 Würfel}
+\begin{tabular}{c | c}
+Summe & Wahrscheinlichkeit \\
+\hline
+2 & 1/36 = 2,78 \% \\
+3 & 2/36 = 5,56 \%\\
+4 & 3/36 = 8,33 \%\\
+5 & 4/36 = 11,11 \%\\
+6 & 5/36 = 13,89 \%\\
+7 & 6/36 = 16,67 \%\\
+8 & 5/36 = 13,89 \%\\
+9 & 4/36 = 11,11 \%\\
+10 & 3/36 = 8,33 \%\\
+11 & 2/36 = 5,56 \%\\
+12 & 1/36 = 2,78 \%
+\end{tabular}
+ \\\\
+Denn es ist (mit allen Permutationen):\\
+2 = 1/1\\
+3 = 1/2 = 2/1\\
+4 = 1/3 = 2/2 = 3/1\\
+5 = 1/4 = 2/3 = 3/2 = 4/1\\
+6 = 1/5 = 2/4 = 3/3 = 4/2 = 5/1\\
+7 = 1/6 = 2/5 = 3/4 = 4/3 = 5/2 = 6/1\\
+8 = 2/6 = 3/5 = 4/4 = 5/3 = 6/2\\
+9 = 3/6 = 4/5 = 5/4 = 6/3\\
+10 = 4/6 = 5/5 = 6/4\\
+11 = 5/6 = 6/5\\
+12 = 6/6
+
+\subsection{3 Würfel}
+
+\begin{tabular}{c | c}
+Summe & Wahrscheinlichkeit \\
+\hline
+3 & 1/216\\
+4 & 2/216\\
+5 & 6/216\\
+6 & 10/216\\
+7 & 15/216\\
+8 & 21/216\\
+9 & 25/216\\
+10 & 27/216\\
+11 & 27/216\\
+12 & 25/216\\
+13 & 21/216\\
+14 & 15/216\\
+15 & 10/216\\
+16 & 6/216\\
+17 & 3/216\\
+18 & 1/216\\
+\end{tabular}
+ \\\\
+Denn es ist (Achtung, nicht alle Permutationen):\\
+3 = 1/1/1\\
+4 = 1/1/2\\
+5 = 1/1/3 = 2/2/1\\
+6 = 1/1/4 = 1/2/3 = 2/2/2\\
+7 = 1/1/5 = 2/2/3 = 3/3/1 = 1/2/4\\
+8 = 1/1/6 = 2/3/3 = 4/3/1 = 1/2/5 = 2/2/4\\
+9 = 6/2/1 = 4/3/2 = 3/3/3 = 2/2/5 = 1/3/5 = 1/4/4\\
+10 = 6/3/1 = 6/2/2 = 5/3/2 = 4/4/2 = 4/3/3 = 1/4/5\\
+11 = 6/4/1 = 1/5/5 = 5/4/2 = 3/3/5 = 4/3/4 = 6/3/2\\
+12 = 6/5/1 = 4/3/5 = 4/4/4 = 5/2/5 = 6/4/2 = 6/3/3\\
+13 = 6/6/1 = 5/4/4 = 3/4/6 = 6/5/2 = 5/5/3\\
+14 = 6/6/2 = 5/5/4 = 4/4/6 = 6/5/3\\
+15 = 6/6/3 = 6/5/4 = 5/5/5\\
+16 = 6/6/4 = 5/5/6\\
+17 = 6/6/5\\
+18 = 6/6/6
+\pagebreak
+
+\section{Spiele}
+\subsection{Lotto}
+Schweizer Lotto (6 aus 42 und 6 Glückszahlen)\\
+\underline{Ein Sechser}: Günstiger Fall 1
+\begin{equation}
+p = \frac{1}{\binom{42}{6}} = 1,9 * 10^{-7}
+\end{equation}
+\underline{Ein Fünfer}: 5 der 6 und noch eine zusätzliche, aber nicht diejenige die einen Sechser gibt
+\begin{equation}
+p = \frac{\binom{6}{5} \cdot 36}{\binom{42}{6}} = 4,1 * 10^{-5}
+\end{equation}
+\underline{Ein Vierer}:
+\begin{equation}
+p = \frac{\binom{6}{4} \cdot \binom{36}{2}}{\binom{42}{6}} = 0.0018
+\end{equation}
+
+\subsection{Jass}
+\underline{Vier Bauern (Asse, Könige, Damen, ...)} : 4 Bauern und noch 5 Karten vom Rest
+\begin{equation}
+p = \frac{\binom{32}{5}}{\binom{36}{9}} = 0.002
+\end{equation}
+\underline{Ein Dreiblatt vom Herz-As}: Das Dreiblatt und dann noch 6 vom Rest, aber nicht Herz-Bube
+\begin{equation}
+p = \frac{\binom{33-1}{6}}{\binom{36}{9}} = 0.009
+\end{equation}
+\underline{Ein Dreiblatt vom Pik-König}: Nicht das As und 10 von Pik	
+\begin{equation}
+p = \frac{\binom{31}{6}}{\binom{36}{9}} = 0.007
+\end{equation}
+\underline{50 vom Kreuz-König weisen}: Nicht das As und nicht die 9
+\begin{equation}
+p = \frac{\binom{30}{5}}{\binom{36}{9}}
+\end{equation}
+\underline{100 vom Kreuz-König weisen}: Nicht das As und nicht die 8
+\begin{equation}
+p = \frac{\binom{29}{4}}{\binom{36}{9}} = \frac{117}{463670} = 0.000252
+\end{equation}
+
+\subsection{Poker}
+Jeder Spieler erhält 5 von 52 Karten. Das sind $\binom{52}{5} = 2 598 960$ mögliche Fälle.\\\\
+\underline{Royal Flush}: Karten A, K, Q, J, 10 der gleichen Farbe
+\begin{equation}
+p = \frac{4}{\binom{52}{5}} = 0.0000015
+\end{equation}
+\underline{Straight Flush}: Fünf aufeinanderfolgende Karten derselben Farbe. Es gibt 9 solche Strassen pro Farbe
+\begin{equation}
+p = \frac{4 \cdot 9}{\binom{52}{5}} = 0.000014
+\end{equation}
+\underline{Four of a kind (Vierling, Poker)}: Vier gleiche Karten
+\begin{equation}
+p = \frac{13 \cdot \binom{48}{1}}{\binom{52}{5}} = 0.00024
+\end{equation}
+\underline{Full House}: Drilling und ein Paar (13 Karten zur Auswahl, also $\binom{4}{2} = 6$ Möglichkeiten. Für das Tripel haben wir dann noch 12 Kartentypen zur Auswahl und so $\binom{4}{3} = 4$ Möglichkeiten. Es gibt somit $13 \cdot 6 \cdot 12 \cdot 4 = 3744$ verschiedene Full Houses.
+\begin{equation}
+p = \frac{13 \cdot 6 \cdot 12 \cdot 4}{\binom{52}{5}} = \frac{3744}{\binom{52}{5}} = 0.0014
+\end{equation}
+\underline{Flush}: Fünf Karten derselben Farbe
+\begin{equation}
+p = \frac{4 \cdot (\binom{13}{5} - 1 - 9)}{\binom{52}{5}} = 0.002
+\end{equation}
+\underline{Straight}: Fünf aufeinanderfolgende Karten mit verschiedenen Farben. Es gibt 10 solche Straights pro Figur und pro Platz eine der 4 Farben, also $10 \cdot 4^5$ wovon die Flushes zu subtrahieren sind.
+\begin{equation}
+p = \frac{10 \cot 4^5 - 40}{\binom{52}{5}} = \frac{10 200}{\binom{52}{5}} = 0.0039
+\end{equation}
+\underline{Drilling}: Nicht vierte der Drillingskarten und kein Paar mehr (Full House)
+\begin{equation}
+p = \frac{13 \cdot \binom{4}{3} \cdot (\binom{48}{2} - 12 \binom{4}{2})}{\binom{52}{5}} = 0.021
+\end{equation}
+\underline{Zwei Paare}
+\begin{equation}
+p = \frac{\binom{13}{2} \binom{4}{2} \binom{4}{2} \cdot 44}{\binom{52}{5}} = 0.047
+\end{equation}
+\underline{Ein Paar}: 13 Kartentypen für das Paar mit 2 von 4 Karten, also $13 \cdot \binom{4}{2}$ Möglichkeiten. Die restlichen so, dass kein Full House und kein zweites Paar entsteht.
+\begin{equation}
+p = \frac{13 \cdot \binom{4}{2} \binom{12}{3} \cdot 4^3}{\binom{52}{5}} = 0.42
+\end{equation}
+\underline{High Card}
+\begin{equation}
+p = \frac{1 302 540}{\binom{52}{5}} = 0.501
+\end{equation}
+
+\end{document}

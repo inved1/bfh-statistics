@@ -7,10 +7,6 @@ German lecture notes to the module "Wahrscheinlichkeitsrechnung und Statistik" (
 
 	Main script
 
-*	spiele.tex
+*	formelsammlung.tex
 
-	Additional notes for Jass, Poker, Lotto
-
-*	laplace-wuerfel.tex
-
-	Additional notes for laplace dice
+	Additional notes for the exam
