@@ -1253,6 +1253,7 @@ h\rq{}(x) &= \lim_{h \to 0}{\frac{(f \cdot g)(x+h) - (f \cdot g)(x)}{h}}\\
 &= f\rq{}(x) \cdot g(x) + f(x) \cdot g\rq{}(x)
 \end{align*}
 \subsection{Produktregel}:
+\begin{mydef}
 \begin{equation}
 (f \cdot g)\rq{}(x) = f\rq{}(x) \cdot g(x) + f(x) \cdot g\rq{}(x)
 \end{equation}
@@ -1260,6 +1261,7 @@ kurz:
 \begin{equation}
 (fg)\rq{} = f\rq{}g + fg\rq{}
 \end{equation}
+\end{mydef}
 \begin{myexample}
 Bestimme die erste Ableitung
 \begin{enumerate}
@@ -1325,11 +1327,13 @@ und $(g \circ h)(x) = \left(e^x\right)^2 = e^{2x}$
 \end{myexample}
 
 \subsection{Kettenregel}
+\begin{mydef}
 Ist $f(x) = h(g(x))$, so ist
 \begin{equation}
 f\rq{}(x) = h\rq{}(u) \cdot g\rq{}(x)
 \end{equation}
 wobei $u = g(x)$ ist. $g\rq{}(x)$ heisst \underline{innere Ableitung}.
+\end{mydef}
 \begin{myexample}
 \begin{enumerate}
 \item Es ist\\
@@ -1582,7 +1586,8 @@ Dabei sind $s_x, s_y$ die Standardabweichungen der beiden Stichproben und
 \begin{equation}
 s_{xy} = \frac{1}{n-1} \sum_{i=1}^{n}{(x_i - \bar{x}})(y_i - \bar{y})
 \end{equation}
-heisst \underline{Kovarianz}.\\
+heisst \underline{Kovarianz}.
+\end{mydef}
 Wir finden
 \begin{equation}
 -1 \leq r \leq 1
@@ -1614,5 +1619,4 @@ wobei die Gerade die Gleichung
 y - \bar{y} = m (x-\bar{x})
 \end{equation}
 erhält mit den Mittelwerten $\bar{x}$ und $\bar{y}$.
-\end{mydef}
 \end{document}

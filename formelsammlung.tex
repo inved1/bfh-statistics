@@ -157,9 +157,59 @@ F(x) = P(Z \leq x) = \int_{-\infty}^{x}{f(t)} \mathrm{d}t
 \end{equation}
 , so heisst die Funktion $f$ \underline{Dichtefunktion} und $f(x)$ \underline{Dichte}.
 \end{mydef}
+\begin{mydef}
+Wir nennen
+\begin{equation}
+\int_{a}^{\infty} f(x) \mathrm{d}x = \lim_{b \to \infty} \int_{a}^{b} f(x) \mathrm{d}x
+\end{equation}
+ein \underline{uneigentliches Integral}.
+\end{mydef}
+\begin{mydef}
+\underline{Produktregel}
+\begin{equation}
+(f \cdot g)\rq{}(x) = f\rq{}(x) \cdot g(x) + f(x) \cdot g\rq{}(x)
+\end{equation}
+kurz:
+\begin{equation}
+(fg)\rq{} = f\rq{}g + fg\rq{}
+\end{equation}
+\end{mydef}
+\begin{mydef}\underline{Kettenregel}: 
+Ist $f(x) = h(g(x))$, so ist
+\begin{equation}
+f\rq{}(x) = h\rq{}(u) \cdot g\rq{}(x)
+\end{equation}
+wobei $u = g(x)$ ist. $g\rq{}(x)$ heisst \underline{innere Ableitung}.
+\end{mydef}
+\begin{mydef}
+Eine stetige Zufallsvariable $Z$ mit Erwartungswert $\mu$ und Standardabweichung $\sigma$ heisst \underline{normalverteilt}, wenn
+\begin{equation}
+\varphi(x) = \frac{1}{\sqrt{2 \pi} \sigma} \cdot e^{-\frac{(x-\mu)^2}{2 \sigma^2}}
+\end{equation}
+ihre Dichtefunktion ist.
+\end{mydef}
+\begin{mydef}
+\begin{equation}
+r := \frac{s_{xy}}{s_x \cdot s_y}
+\end{equation}
+heisst \underline{Korrelationskoeffizient}.\\
+Dabei sind $s_x, s_y$ die Standardabweichungen der beiden Stichproben und
+\begin{equation}
+s_{xy} = \frac{1}{n-1} \sum_{i=1}^{n}{(x_i - \bar{x}})(y_i - \bar{y})
+\end{equation}
+heisst \underline{Kovarianz}.
+\end{mydef}
 
 
 
+\subsection{Komposition}
+\begin{equation}
+g(x) = x^2, h(x) = e^x
+\end{equation}
+so $(h \circ g)(x) = e^{x^2}$\\
+und $(g \circ h)(x) = \left(e^x\right)^2 = e^{2x}$
+
+\newpage
 \section{Laplace-Würfel: Augensummen}
 \subsection{2 Würfel}
 \begin{tabular}{c | c}
