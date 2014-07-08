@@ -1177,4 +1177,442 @@ F(x) = P(Z \leq x) = \int_{-\infty}^{x}{f(t)} \mathrm{d}t
 \end{equation}
 , so heisst die Funktion $f$ \underline{Dichtefunktion} und $f(x)$ \underline{Dichte}.
 \end{mydef}
+\section{Exponentialfunktion}
+Betrachten wir die Näherung für die Binomialverteilung, so sehen wir, dass als stetige Zufallsvariable wahrscheinlich diejenige Funktion in Frage kommt, deren Graph die \underline{Gauss\rq{}sche Glockenkurve} ist. Dabei ist
+\begin{equation}
+f(x) = k \cdot e^{-a \cdot x^2}
+\end{equation}
+Deshalb betrachten wir zuerst Exponentialfunktionen, ihre Ableitungen und ihre Stammfunktionen. Ist
+\begin{equation}
+f: \mathbb{R} \longrightarrow \mathbb{R}^{+} \mbox{ mit } f(x) = e^x
+\end{equation}
+\\\\TODO: Graphik\\\\
+So ist
+\begin{equation}
+f\rq{}(x)= \lim_{h \to 0}{\frac{f(x+h) - f(x)}{h}}
+\end{equation}
+also
+\begin{align*}
+f\rq{}(x)&= \lim_{h \to 0}{\frac{e^{x+h} - e^x}{h}}\\
+&= \lim_{h \to 0}{\frac{e^{x}(e^h - 1)}{h}}\\
+&= e^x \cdot \lim_{h \to 0}{\frac{(e^h - 1)}{h}}\\
+\end{align*}
+und
+\begin{equation}
+\lim_{h \to 0}{\frac{e^h - 1}{h}} = 1
+\end{equation}
+(Beweis mit Definition von e).\\
+,was
+\begin{equation}
+f\rq{}(x) = e^x
+\end{equation}
+bedeutet. Damit ist (unbestimmtes Integral)
+\begin{equation}
+\int e^x \mathrm{d}x = e^x + c
+\end{equation}
+Besitzt die unbeschränkte Fläche zwischen Graph und x-Achse für $x \leq 0$ einen Inhalt?\\\\
+Wir müssen also untersuchen, ob
+\begin{equation}
+\int_{-\infty}^{0} e^x \mathrm{d}x
+\end{equation}
+eine reelle Zahl ist.
+\begin{mydef}
+Wir nennen
+\begin{equation}
+\int_{a}^{\infty} f(x) \mathrm{d}x = \lim_{b \to \infty} \int_{a}^{b} f(x) \mathrm{d}x
+\end{equation}
+ein \underline{uneigentliches Integral}.
+\end{mydef}
+Also ist
+\begin{align*}
+\int_{-\infty}^{0} e^x \mathrm{d}x &= \lim_{a \to -\infty}{ \int_{a}^{0} e^x \mathrm{d}x}\\
+&= \lim_{a \to -\infty}{\left( \left. e^x \right|_{a}^{0} \right)}\\
+&= \lim_{a \to -\infty}{\left( e^0 - e^a \right)}\\
+&= \lim_{a \to -\infty}{\left( 1 - e^a \right)}\\
+&= 1 - 0 =1
+\end{align*}
+Suchen wir de Ableitung von
+\begin{equation}
+g(x) = e^{2x}
+\end{equation}
+so überlegen wir, dass
+\begin{equation}
+g(x) = e^x \cdot e^x
+\end{equation}
+ist. Wir müssen also überlegen, wie das Produkt
+\begin{equation}
+h(x) = (f \cdot g)(x) := f(x) \cdot g(x)
+\end{equation}
+abgeleitet wird. Es ist
+\begin{align*}
+h\rq{}(x) &= \lim_{h \to 0}{\frac{(f \cdot g)(x+h) - (f \cdot g)(x)}{h}}\\
+&=\lim_{h \to 0}{\frac{f(x+h)g(x+h) - f(x)g(x)}{h}}\\
+&= \lim_{h \to 0}{\frac{f(x+h) \textcolor{red}{ - f(x)g(x+h)+f(x)g(x+h)} - f(x)g(x)}{h}}\\
+&= \lim_{h \to 0}{\frac{f(x+h)g(x+h) - f(x)g(x+h)}{h}} + \lim_{h \to 0}{\frac{f(x)g(x+h) - f(x)g(x)}{h}}\\
+&= \lim_{h \to 0}{\frac{f(x+h) - f(x)}{h}} \cdot g(x+h) + \lim_{h \to 0}{\frac{g(x+h) - g(x)}{h}} \cdot f(x)\\
+&= f\rq{}(x) \cdot g(x) + f(x) \cdot g\rq{}(x)
+\end{align*}
+\subsection{Produktregel}:
+\begin{equation}
+(f \cdot g)\rq{}(x) = f\rq{}(x) \cdot g(x) + f(x) \cdot g\rq{}(x)
+\end{equation}
+kurz:
+\begin{equation}
+(fg)\rq{} = f\rq{}g + fg\rq{}
+\end{equation}
+\begin{myexample}
+Bestimme die erste Ableitung
+\begin{enumerate}
+\item Mit der Produktregel
+\begin{equation}
+h(x) = x^3 \cdot e^x
+\end{equation}
+mit $f(x) = x^3, g(x) = e^x$\\
+wird $f\rq{}(x) = 3x^2, g(x) = e^x$\\
+und so
+\begin{equation}
+h\rq{}(x) = 3x^2 \cdot e^x + x^3 \cdot e^x = x^2 e^x (3 + x)
+\end{equation}
+\item Mit der Produktregel
+\begin{equation}
+i(x) = e^{2x} = e^x \cdot e^x
+\end{equation}
+wird
+\begin{equation}
+i(x) = e^x \cdot e^x + e^x \cdot e^x = 2e^x \cdot e^x = 2e^{2x}
+\end{equation}
+\item Mit der Produktregel
+\begin{equation}
+j(x) = e^{3x} = e^{2x} \cdot e^{x}
+\end{equation}
+wird
+\begin{equation}
+j\rq{}(x) = 2e^{2x} \cdot e^x + e^{2x} \cdot e^x = 2e^{3x} + e^{3x} = 3e^{3x}
+\end{equation}
+\end{enumerate}
+\end{myexample}
+Um zum Beispiel zurückzukehren ist also
+\begin{equation}
+(e^{kx})\rq{} = k \cdot e^{kx}, k \in \mathbb{R} \setminus \{0\}
+\end{equation}
+\begin{equation}
+f(x) = e^{kx}
+\end{equation}
+ist die Verkettung (Komposition) der Funktion
+\begin{equation}
+u = g(x) = kx
+\end{equation}
+und
+\begin{equation}
+h(n) = e^u
+\end{equation}
+\begin{myexample}
+\begin{enumerate}Anhand von Beispielen zeigen wir die Verkettung von Funktionen
+\item Komposition
+\begin{equation}
+g(x) = \sin x, h(x) = x^3
+\end{equation}
+so $(g \circ h)(x) = g(h(x)) = \sin\rq{} x^3$\\
+und $(h \circ g)(x) = h(g(x)) = (\sin x)^3 = \sin^3 x$
+
+\item Komposition
+\begin{equation}
+g(x) = x^2, h(x) = e^x
+\end{equation}
+so $(h \circ g)(x) = e^{x^2}$\\
+und $(g \circ h)(x) = \left(e^x\right)^2 = e^{2x}$
+\end{enumerate}
+\end{myexample}
+
+\subsection{Kettenregel}
+Ist $f(x) = h(g(x))$, so ist
+\begin{equation}
+f\rq{}(x) = h\rq{}(u) \cdot g\rq{}(x)
+\end{equation}
+wobei $u = g(x)$ ist. $g\rq{}(x)$ heisst \underline{innere Ableitung}.
+\begin{myexample}
+\begin{enumerate}
+\item Es ist\\
+\begin{equation}
+f(x) = e^{-x^2}
+\end{equation}
+also $u = g(x) = -x^2, h(u) = e^u$\\
+und so
+\begin{equation}
+f\rq{}(x) = e^u \cdot (-2x) \to f\rq{}(x) = e^{x^2} \cdot (-2x)
+\end{equation}
+\item
+Es ist
+\begin{equation}
+f(x) = (x^2 + 4x + 1)^3
+\end{equation}
+also
+\begin{equation}
+f\rq{}(x) = 3u^2 \cdot (2x + 4) = (6x+12)(x^2+4x+1)^2
+\end{equation}
+\item
+Es ist
+\begin{equation}
+f(x) = e^{-x}
+\end{equation}
+also
+\begin{equation}
+u = g(x) = -x, h(u) = e^u
+\end{equation}
+und so
+\begin{equation}
+f\rq{}(x) = e^{-x} (-1) = -e^{-x}
+\end{equation}
+\item
+Berechne $a,b \neq 0$ so, dass der Graph von
+\begin{equation}
+f: \mathbb{R} \longrightarrow \mathbb{R} \mbox{ mit } f(x) = a \cdot e^{- \frac{x^2}{b}}
+\end{equation}
+den Wendepunkt $W(-\sqrt{2} / \frac{5}{\sqrt{e}})$ besitzt.\\\\
+Mit
+\begin{equation}
+f\rq{}(x) = a \cdot e^{- \frac{x^2}{b}} \cdot ( \frac{-2x}{b} ) = -\frac{a}{b} \cdot 2x \cdot e^{- \frac{x^2}{b}}
+\end{equation}
+und
+\begin{align*}
+f\rq{}\rq{}(x) &= -\frac{a}{b} \left( 2x \cdot e^{-\frac{x^2}{b}} (-\frac{2x}{b}) + 2e^{-\frac{x^2}{b}}\right)\\
+&= -\frac{a}{b} \cdot 2e^{-\frac{x^2}{b}} \left(-\frac{2x^2}{b} + 1\right)
+\end{align*}
+Es wird $f\rq{}\rq{}(x) = 0$, wenn $- \frac{2x^2}{b} + 1 = 0$\\
+Mit $x = \sqrt{2}$ wird
+\begin{equation}
+-\frac{4}{b} + 1 = 0 \longrightarrow -\frac{4}{b} = -1 \longrightarrow b = 4
+\end{equation}
+Ausserdem ist $f(\sqrt{2}) = \frac{5}{\sqrt{e}}$, also
+\begin{align*}
+\frac{5}{\sqrt{e}} &= a \cdot e^{-\frac{2}{4}}\\
+\longrightarrow \frac{5}{\sqrt{e}} &= a \cdot e^{-\frac{1}{2}}\\
+\longrightarrow \frac{5}{\sqrt{e}} &= \frac{a}{\sqrt{e}}\\
+\longrightarrow a &= 5
+\end{align*}
+und so $f(x) = 5 \cdot e^{-\frac{x^2}{4}}$.\\
+Ist $h(x) = (k^2 - x^2) e^x$, so werden die Nullstellen
+\begin{equation}
+k^2 - x^2 = 0 \longrightarrow k^2 = x^2 \longrightarrow \pm k = x_{1,2}
+\end{equation}
+Mit
+\[ g(x) = \left\{ 
+  \begin{array}{l l}
+    h(x) & \quad \text{für $-k < x \leq k$}\\
+    0 & \quad \text{sonst}
+  \end{array} \right.\]
+soll $g$ eine Dichte werden. Also muss
+\begin{enumerate}
+\item
+\begin{equation}
+\int_{-k}^{k} \left( k^2 - x^2 \right) e^x \mathrm{d}x = 1
+\end{equation}
+sein. Somit
+\begin{equation}
+2e^k (k-1) + 2e^{-k} (k+1) = 1 \longrightarrow \mbox{ TR: } k=0.886
+\end{equation}
+Weiter muss
+\item
+\begin{equation}
+g(x) \geq 0
+\end{equation}
+sein. Also wird
+\[ g(x) = \left\{ 
+  \begin{array}{l l}
+    (0.784 - x^2) e^x & \quad \text{für $-0.886 < x \leq 0.886$}\\
+    0 & \quad \text{sonst}
+  \end{array} \right.\]
+\\\\TODO: Grafik\\\\
+\end{enumerate}
+\end{enumerate}
+\end{myexample}
+
+\newpage
+
+\section{Normalverteilung}
+Wir betrachten die \underline{standardisierte Binomialverteilung}. Das ist eine Binomialverteilung mit
+\begin{equation}
+\mu := E(Z) = 0, \sigma = 1
+\end{equation}
+wofür wir $BV[0,1]$ schreiben.\\
+Welches ist nun de stetige Zufallsvariable, die $BV[0,1]$ am Besten nähert?
+\subsection{Satz von Moire-Laplace}
+(Abraham de Moire, 1667 bis 1754, Paris, London)\\
+Die Dichtefunktionen $\varphi_k$ der standardisierten Binomialverteilung streben mit wachsendem $n$ gegen
+\begin{equation}
+\varphi(x) = \frac{1}{\sqrt{2 \pi}} e^{- \frac{x^2}{2}}, x \in \mathbb{R}
+\end{equation}
+\underline{Diskussion}\\
+\begin{enumerate}
+\item
+$\varphi(x) > 0$ für alle $x \in \mathbb{R}$
+\item
+$\varphi(x) = \varphi(-x)$\\
+also ist der Graph symmetrisch zur y-Achse
+\item
+$\lim_{x \to \pm \infty}{\varphi(x) = 0}$\\
+also ist die x-Achse die Asymptote.
+\item
+\underline{Extremalwerte}:
+\begin{equation}
+\varphi(x) = \frac{1}{\sqrt{2 \pi}} e^{-\frac{x^2}{2}} \cdot (-x)
+\end{equation}
+$\varphi\rq{}(x) = 0$, wenn $x=0$\\
+$= y_1 = \varphi(0) = \frac{1}{\sqrt{2 \pi}} = 0.398$
+\item
+\underline{Wendepunkte}:
+\begin{align*}
+\varphi\rq{}\rq{}(x) &= \frac{1}{\sqrt{2 \pi}} \left(e^{-\frac{x^2}{2}}(-x)(-x) + e^{-\frac{x^2}{2}}(-1)\right)\\
+&= \frac{1}{\sqrt{2 \pi}} e^{-\frac{x^2}{2}} (x^2 - 1)
+\end{align*}
+Es ist also $\varphi\rq{}\rq{}(x) = 0$, wenn $x^2 -1 = 0$. Damit ist $x_{2,3} = \pm 1$ und so wird (mit einsetzen in Funkion) $y_{2,3} = \varphi(1) = 0,241$
+\item
+\underline{Graph}
+\\\\TODO\\\\
+
+\end{enumerate}
+Der Graph heisst Gauss\rq{}sche \underline{Glockenkurve}. Ist $\varphi$ eine Dichte?\\
+Es ist $\varphi(x) > 0$, siehe $(1)$ und $(6)$
+\begin{equation}
+\int_{- \infty}^{\infty} \varphi(x) \mathrm{d}x = \frac{1}{\sqrt{2 \pi}} \int_{- \infty}^{\infty} e^{-\frac{x^2}{2}} \mathrm{d}x
+\end{equation}
+Es existiert keine Stammfunktion! Also muss die Verteilungsfunktion
+\begin{equation}
+P(Z \leq x) = \int_{-\infty}^{\infty} \varphi(t) \mathrm{d}t
+\end{equation}
+mit einer Näherung berechnet werden.
+\\\\TODO\\\\
+Mit einem Rechner finden wir
+\begin{equation}
+\int_{- \infty}^{\infty} e^{-x^2} \mathrm{d}x = \sqrt{\pi}
+\end{equation}
+und so
+\begin{equation}
+\frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} e^{-\frac{x^2}{2}} \mathrm{d}x = 1
+\end{equation}
+also ist $\varphi$ eine Dichte.\\
+Wie berechnen wir nun $\varphi(x)$, wenn die Standardabweichung $\sigma \neq 1$ und der Erwartungswert $\mu \neq 0$ sind?
+\\\\TODO\\\\
+Es ist $\varphi(x) = \frac{f(x) - \mu}{\sigma}$, also wird die Näherung
+\begin{equation}
+g(x) = \frac{1}{\sqrt{2 \pi} \sigma} e^{-\frac{(x-\mu)^2}{2 \sigma^2}}
+\end{equation}
+für eine Binomialverteilung $BV[\mu; \sigma]$.
+\begin{mydef}
+Eine stetige Zufallsvariable $Z$ mit Erwartungswert $\mu$ und Standardabweichung $\sigma$ heisst \underline{normalverteilt}, wenn
+\begin{equation}
+\varphi(x) = \frac{1}{\sqrt{2 \pi} \sigma} \cdot e^{-\frac{(x-\mu)^2}{2 \sigma^2}}
+\end{equation}
+ihre Dichtefunktion ist.
+\end{mydef}
+
+\chapter{Statistik}
+\section{Masszahlen}
+In der Statistik werden Daten
+\begin{equation}
+x_1, x_2, x_3, x_4, ..., x_n \quad (n \in \mathbb{N})
+\end{equation}
+bei einer Umfrage erhoben.\\
+Wir erhalten so Werte einer \underline{Stichprobe} und wollen Rückschlüsse auf die \underline{Grundgesamtheit} ziehen.
+\\\\TODO\\\\
+Wir berechnen einige \underline{statistische Masszahlen} wie
+\begin{enumerate}
+\item
+kleinster und grösster Wert
+\begin{equation}
+x_{min}, x_{max}
+\end{equation}
+\item
+Mittelwert (Durchschnitt)
+\begin{equation}
+\bar{x} = \frac{x_1 + x_2 + x_3 + ... + x_n}{2} = \frac{1}{n} \sum_{k=1}^{n}{x_n}
+\end{equation}
+auch \underline{arithmetisches Mittel} genannt. Das geometrische Mittel
+\begin{equation}
+g = \sqrt{n}{x_1 \cdot x_2 \cdot x_3 \cdot ... \cdot x_n}
+\end{equation}
+Der Mittelwert ist ein \underline{Schätzwert} für den Erwartungswert
+\begin{equation}
+\mu := E(Z)
+\end{equation}
+der Grundgesamtheit.
+\item
+Varianz und Standardabweichung
+\begin{equation}
+s^2 = \frac{(x_1 - \bar{x})^2 + (x_2 - \bar{x})^2 + ... + (x_n - \bar{x})^2}{n-1}
+\end{equation}
+ist dann die Varianz und $s$ die Standardabweichung.\\
+Erst mit $n-1$ wird
+\begin{equation}
+s^2 = \frac{1}{n-1} \sum_{k=1}^{n} (x_n - \bar{x})^2
+\end{equation}
+ein Schätzwert für die Varianz $\sigma^2$ der Grundgesamtheit.
+\item
+Median (Zentralwert, 50\%-Quantil)
+\begin{equation}
+\tilde{x}
+\end{equation}
+Der $\tilde{x}$ ist derjenige Wert, der genau in der Mitte der sortierten Daten steht.
+Ebenso können wir 10\%-Quantil, 20\%-Quantil etc. berechnen.
+\item
+Stichprobenumfang $n$
+
+\end{enumerate}
+
+\section{TODO}
+TODO: Blätter verloren
+
+\section{Regression}
+Das Wort stammt von Sir Francis Galton, 1822 bis 1911, wichtige Grundlagen der Vererbungslehre.\\\\
+Wir betrachten zwei Stichproben
+\begin{equation}
+x = \{ x_1, x_2, x_3, x_4, ..., x_n\}
+\end{equation}
+und
+\begin{equation}
+y = \{ y_1, y_2, y_3, y_4, ..., y_n\}
+\end{equation}
+und fragen uns, ob es sinnvoll ist, von einer Abhängigkeit zu sprechen. Dazu bestimmen wir
+\begin{mydef}
+\begin{equation}
+r := \frac{s_{xy}}{s_x \cdot s_y}
+\end{equation}
+heisst \underline{Korrelationskoeffizient}.\\
+Dabei sind $s_x, s_y$ die Standardabweichungen der beiden Stichproben und
+\begin{equation}
+s_{xy} = \frac{1}{n-1} \sum_{i=1}^{n}{(x_i - \bar{x}})(y_i - \bar{y})
+\end{equation}
+heisst \underline{Kovarianz}.\\
+Wir finden
+\begin{equation}
+-1 \leq r \leq 1
+\end{equation}
+und sprechen von hoher Korrelation, wenn $r \approx \pm 1$. Ist $r \approx 0$, so ist keine Korrelation vorhanden. Ist nun Korrelation vorhanden, so suchen wir eine Funktion
+\\\\TODO\\\\
+Ist $y = m \cdot x + q$, so sprechen wir von \underline{linearer Regression}.\\
+Dabei sollen die Abstände der Punkte zu Geraden in y-Richtung minimal werden
+\\\\TODO\\\\
+Es ist also
+\begin{align*}
+d_1 &= y_1 - (mx_1 + q)\\
+d_2 &= mx_2 + q - y_2
+\end{align*}
+Also muss $d_1 + d_2 + d_3 + ... + d_n$ minimal werden. Damit sich die Werte nicht gegenseitig aufheben, wählen wir
+\begin{equation}
+{d_1}^2 + {d_2}^2 + {d_3}^2 + ... + {d_n}^2
+\end{equation}
+und sprechen von der \underline{Methode der kleinsten Quadrate} (nach C. F. Gauss). Wir suchen also das Minimum der Funktion
+\begin{equation}
+F(m,q) = \sum_{i=1}^{n}{(y_i - (mx_i + q))^2}
+\end{equation}
+und finden
+\begin{equation}
+m = \frac{s_{xy}}{s_x^2}
+\end{equation}
+wobei die Gerade die Gleichung
+\begin{equation}
+y - \bar{y} = m (x-\bar{x})
+\end{equation}
+erhält mit den Mittelwerten $\bar{x}$ und $\bar{y}$.
+\end{mydef}
 \end{document}
